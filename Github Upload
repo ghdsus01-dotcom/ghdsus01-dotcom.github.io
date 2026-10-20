@@ -1,0 +1,1783 @@
+<!doctype html>
+<html lang="ko" data-font="m">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>마운자로·위고비 안내</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --surface: #eef1f5;
+        --ink: #10141a;
+        --ink-soft: #3c4654;
+        --line: #c9d2dd;
+        --hero-a: #0b4ea2;
+        --hero-b: #0a6b45;
+        --hero-ink: #ffffff;
+        --card-bg: #ffffff;
+        --focus: #ff8a00;
+        --alert: #c81623;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #12151a;
+          --surface: #1e242d;
+          --ink: #f4f6f9;
+          --ink-soft: #c2ccd8;
+          --line: #46525f;
+          --hero-a: #1663bd;
+          --hero-b: #0f7d53;
+          --card-bg: #1a1f27;
+          --focus: #ffb020;
+          --alert: #ff7070;
+        }
+      }
+
+      html[data-font="m"] { font-size: 100%; }
+      html[data-font="l"] { font-size: 116%; }
+      html[data-font="xl"] { font-size: 133%; }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", sans-serif;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      .wrap {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 1.25rem 1rem calc(2rem + env(safe-area-inset-bottom));
+      }
+
+      .brand {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        margin: 0 0 0.75rem;
+      }
+
+      .lead {
+        font-size: 1.45rem;
+        font-weight: 700;
+        margin: 0.25rem 0 1rem;
+      }
+
+      /* 글자 크기 조절 */
+      .fontsize {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.25rem;
+      }
+      .fontsize .label { font-weight: 700; font-size: 1.15rem; }
+      .fontsize button {
+        font: inherit;
+        font-size: 1.1rem;
+        font-weight: 700;
+        min-height: 3rem;
+        padding: 0.5rem 1rem;
+        border: 3px solid var(--line);
+        border-radius: 0.75rem;
+        background: var(--card-bg);
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .fontsize button[aria-pressed="true"] {
+        background: var(--ink);
+        color: var(--bg);
+        border-color: var(--ink);
+      }
+      button:focus-visible, a:focus-visible {
+        outline: 4px solid var(--focus);
+        outline-offset: 2px;
+      }
+      [tabindex="-1"]:focus { outline: none; }
+
+      /* 메뉴 */
+      .menu { display: flex; flex-direction: column; gap: 1rem; }
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        border-radius: 1rem;
+        padding: 1.1rem 1.2rem;
+        min-height: 5.5rem;
+      }
+      .item .num {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        font-size: 1.6rem;
+        font-weight: 800;
+        background: rgba(255,255,255,0.22);
+        color: inherit;
+      }
+      .item .texts { flex: 1 1 auto; min-width: 0; }
+      .item .title { display: block; font-weight: 800; line-height: 1.25; }
+      .item .sub { display: block; font-weight: 600; margin-top: 0.2rem; }
+      .item .arrow { flex: 0 0 auto; font-size: 2.2rem; font-weight: 800; line-height: 1; }
+
+      /* 1·2번: 가장 크고 눈에 띄게 */
+      .item-hero { min-height: 8.5rem; color: var(--hero-ink); }
+      .item-hero .title { font-size: 2.3rem; }
+      .item-hero .sub { font-size: 1.45rem; }
+      .item-hero .num { width: 3.6rem; height: 3.6rem; font-size: 1.9rem; }
+      .item-a { background: var(--hero-a); }
+      .item-b { background: var(--hero-b); }
+
+      /* 3~5번 */
+      .item-sub {
+        background: var(--surface);
+        color: var(--ink);
+        border: 3px solid var(--line);
+      }
+      .item-sub .num { background: var(--ink); color: var(--bg); }
+      .item-sub .title { font-size: 1.7rem; }
+      .item-sub .sub { font-size: 1.25rem; color: var(--ink-soft); }
+
+      .note {
+        margin: 1.5rem 0 0;
+        font-size: 1.15rem;
+        color: var(--ink-soft);
+      }
+
+      /* 문의 전화 */
+      .contact {
+        margin: 1.5rem 0 0;
+        border: 3px solid var(--line);
+        border-radius: 1rem;
+        background: var(--surface);
+        padding: 1.1rem;
+      }
+      .contact-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 0 0 0.2rem;
+      }
+      .contact-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        min-width: 0;
+        color: var(--bg);
+        background: var(--ink);
+        text-decoration: none;
+        border-radius: 0.85rem;
+        padding: 0.85rem 0.8rem;
+        margin-top: 0.8rem;
+        min-height: 4.8rem;
+      }
+      .contact-link .contact-label,
+      .contact-link .contact-num {
+        color: var(--bg);
+      }
+      .contact-texts {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .contact-arrow {
+        flex: 0 0 auto;
+        font-size: 1.7rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+      .contact-note {
+        font-size: 1.2rem;
+        color: var(--ink-soft);
+        margin: 0.7rem 0 0;
+      }
+      .contact-label {
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      .contact-num {
+        font-size: 1.35rem;
+        font-weight: 800;
+        white-space: nowrap;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+      }
+
+      /* 하위 페이지 */
+      .back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font: inherit;
+        font-size: 1.3rem;
+        font-weight: 800;
+        min-height: 3.6rem;
+        padding: 0.6rem 1.1rem;
+        margin-bottom: 1.2rem;
+        border: 3px solid var(--ink);
+        border-radius: 0.75rem;
+        background: var(--card-bg);
+        color: var(--ink);
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .page h2 { font-size: 2.1rem; font-weight: 800; margin: 0 0 1rem; line-height: 1.3; }
+      .page h3 { font-size: 1.7rem; font-weight: 800; margin: 1.6rem 0 0.8rem; line-height: 1.3; }
+      .page p { font-size: 1.35rem; margin: 0 0 1rem; }
+
+      /* 안내 목록 (점) */
+      .points { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+      .points li {
+        position: relative;
+        font-size: 1.35rem;
+        line-height: 1.55;
+        padding: 0.7rem 0 0.7rem 2rem;
+        border-top: 2px solid var(--line);
+      }
+      .points li::before {
+        content: "•";
+        position: absolute;
+        left: 0.4rem;
+        font-weight: 800;
+      }
+
+      /* 순서 목록 (번호) */
+      .steps { list-style: none; margin: 0 0 1.5rem; padding: 0; counter-reset: step; }
+      .steps li {
+        counter-increment: step;
+        display: flex;
+        gap: 0.9rem;
+        align-items: flex-start;
+        font-size: 1.35rem;
+        line-height: 1.55;
+        padding: 0.7rem 0;
+        border-top: 2px solid var(--line);
+      }
+      .steps li::before {
+        content: counter(step);
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.6rem;
+        height: 2.6rem;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--bg);
+        font-size: 1.4rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      /* 꼭 확인하세요 상자 */
+      .warn {
+        border: 3px solid var(--focus);
+        border-radius: 1rem;
+        padding: 1rem 1.1rem;
+        margin: 0 0 1.5rem;
+      }
+      .warn p { margin: 0 0 0.6rem; }
+      .warn p:last-child { margin-bottom: 0; }
+
+      /* 가격 카드: 용량 하나에 카드 하나 */
+      .price-card {
+        border: 3px solid var(--line);
+        border-radius: 1rem;
+        background: var(--card-bg);
+        padding: 1rem 1.1rem 0.6rem;
+        margin-bottom: 1rem;
+      }
+      .price-card h3 {
+        font-size: 1.9rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin: 0 0 0.3rem;
+      }
+      .prow {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.65rem 0;
+        border-top: 2px solid var(--line);
+      }
+      .prow .plabel { font-size: 1.3rem; font-weight: 700; line-height: 1.35; }
+      .prow .pamt { font-size: 1.5rem; font-weight: 800; white-space: nowrap; }
+      .prow-save .pamt { font-size: 1.65rem; }
+      .plabel .psub {
+        display: block;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+        line-height: 1.35;
+        margin-top: 0.15rem;
+      }
+
+      /* 재고 표시 */
+      .dose-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.3rem;
+      }
+      .dose-head h3 { margin: 0; }
+      .stock-badge {
+        flex: 0 0 auto;
+        display: inline-block;
+        background: #0a7d3b;
+        color: #ffffff;
+        font-size: 1.35rem;
+        font-weight: 800;
+        line-height: 1.3;
+        border-radius: 999px;
+        padding: 0.35rem 1rem;
+        white-space: nowrap;
+      }
+      @media (prefers-color-scheme: dark) {
+        .stock-badge { background: #15803d; }
+      }
+      /* 재고 뱃지 반짝임 */
+      @keyframes stockTwinkle {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.08); }
+      }
+      .stock-badge { animation: stockTwinkle 1.1s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) {
+        .stock-badge { animation: none; }
+      }
+      /* 첫 화면 히어로 버튼 안의 재고 뱃지 */
+      .hero-stock {
+        display: inline-block;
+        margin-top: 0.55rem;
+        background: #ffffff;
+        color: #0a7d3b;
+        font-size: 1.35rem;
+        font-weight: 800;
+        line-height: 1.3;
+        border-radius: 999px;
+        padding: 0.35rem 1rem;
+        white-space: nowrap;
+        animation: stockTwinkle 1.1s ease-in-out infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-stock { animation: none; }
+      }
+      .stock-note {
+        font-size: 1.55rem;
+        font-weight: 800;
+        color: #0a7d3b;
+        margin: 0 0 1rem;
+      }
+      @media (prefers-color-scheme: dark) {
+        .stock-note { color: #4ade80; }
+      }
+
+      /* 용량별 케이스 색상을 옅게 깐 배경 (마운자로 용량별 라벨 색) */
+      .dose-gray   { background: #f1f2f4; }
+      .dose-purple { background: #f3eefb; }
+      .dose-green  { background: #e9f6ee; }
+      .dose-pink   { background: #fdeef3; }
+      .dose-blue   { background: #e8f1fc; }
+      .dose-orange { background: #fdf0e3; }
+      /* 위고비 용량별 펜 색상 (연초록·분홍은 위 클래스 재사용) */
+      .dose-brown { background: #f4ede4; }
+      .dose-dark  { background: #e9eaec; }
+      @media (prefers-color-scheme: dark) {
+        .dose-gray   { background: #232830; }
+        .dose-purple { background: #282236; }
+        .dose-green  { background: #1d2b23; }
+        .dose-pink   { background: #2c2126; }
+        .dose-blue   { background: #1d2735; }
+        .dose-orange { background: #2c241b; }
+        .dose-brown  { background: #2b251e; }
+        .dose-dark   { background: #26282c; }
+      }
+
+      /* 하단 큰 버튼 */
+      .goto {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        background: #9a3412;
+        color: #ffffff;
+        border-radius: 1rem;
+        padding: 1.1rem 1.2rem;
+        min-height: 5rem;
+        margin-top: 1.5rem;
+      }
+      .goto .texts { flex: 1 1 auto; min-width: 0; }
+      .goto .gtitle { display: block; font-size: 1.7rem; font-weight: 800; line-height: 1.3; }
+      .goto .gsub { display: block; font-size: 1.2rem; font-weight: 600; opacity: 0.85; margin-top: 0.2rem; }
+      .goto .arrow { flex: 0 0 auto; font-size: 2.2rem; font-weight: 800; line-height: 1; }
+
+      /* 앱 설치 버튼 (스토어로 바로 연결) */
+      .storebtn {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        background: var(--ink);
+        color: #ffffff;
+        border-radius: 0.85rem;
+        padding: 0.85rem 1.1rem;
+        min-height: 4.6rem;
+        margin-top: 0.7rem;
+      }
+      .storebtn .texts { flex: 1 1 auto; min-width: 0; }
+      .storebtn .stitle { display: block; font-size: 1.45rem; font-weight: 800; line-height: 1.3; }
+      .storebtn .ssub { display: block; font-size: 1.1rem; font-weight: 600; opacity: 0.85; margin-top: 0.15rem; line-height: 1.35; }
+      .storebtn .arrow { flex: 0 0 auto; font-size: 2rem; font-weight: 800; line-height: 1; }
+      /* 스토어 버튼 색 구분: 안드로이드=초록, 아이폰=파랑 (아래 발급 안내 버튼의 주황갈색과 혼동 방지) */
+      .storebtn[href*="play.google.com"] { background: #0a6b45; color: #ffffff; }
+      .storebtn[href*="apps.apple.com"] { background: #0b4ea2; color: #ffffff; }
+      @media (prefers-color-scheme: dark) {
+        .storebtn[href*="play.google.com"] { background: #0f7d53; }
+        .storebtn[href*="apps.apple.com"] { background: #1663bd; }
+        .goto { background: #b45309; }
+      }
+
+      /* 병원 카드 */
+      .hosp-card {
+        border: 3px solid var(--line);
+        border-radius: 1rem;
+        background: var(--card-bg);
+        padding: 1rem 1.1rem 0.6rem;
+        margin-bottom: 1rem;
+      }
+      .hosp-card h3 {
+        font-size: 1.9rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin: 0 0 0.4rem;
+      }
+      .hosp-card p { font-size: 1.3rem; margin: 0 0 0.6rem; }
+      .alert { color: var(--alert); font-weight: 800; }
+      .hosp-tel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        min-width: 0;
+        color: var(--ink);
+        text-decoration: none;
+        padding: 0.7rem 0;
+        border-top: 2px solid var(--line);
+        min-height: 3.8rem;
+      }
+      .hosp-tel .tlabel { font-size: 1.2rem; font-weight: 700; }
+      .hosp-tel .tnum { font-size: 1.4rem; font-weight: 800; white-space: nowrap; letter-spacing: -0.015em; }
+
+      /* 네이버지도 버튼 */
+      .mapbtn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        text-decoration: none;
+        background: #038a35;
+        color: #ffffff;
+        border-radius: 0.75rem;
+        padding: 0.9rem 1.1rem;
+        min-height: 4.2rem;
+        margin: 0.7rem 0 0.6rem;
+        font-size: 1.5rem;
+        font-weight: 800;
+        line-height: 1.3;
+      }
+      .mapbtn .arrow { flex: 0 0 auto; font-size: 2rem; font-weight: 800; line-height: 1; }
+
+
+      /* 다온카드 발급·카카오페이 등록 안내 (예시 화면 포함) */
+      .dg-flow { display: flex; gap: 0.5rem; align-items: stretch; margin: 0 0 1.5rem; }
+      .dg-flow .dg-f {
+        flex: 1; text-align: center; border-radius: 0.75rem; padding: 0.8rem 0.4rem;
+        font-weight: 800; font-size: 1.25rem; line-height: 1.4;
+        background: var(--surface); border: 3px solid var(--line);
+      }
+      .dg-flow .dg-arrow { align-self: center; font-size: 1.6rem; font-weight: 800; color: var(--ink-soft); }
+      .dg-need {
+        background: var(--surface);
+        border-radius: 0.75rem;
+        padding: 0.9rem 1rem;
+        font-size: 1.3rem;
+        line-height: 1.55;
+        margin: 0 0 1.2rem;
+      }
+      .dg-step {
+        border: 3px solid var(--line);
+        border-radius: 1rem;
+        background: var(--card-bg);
+        padding: 1rem 1.1rem;
+        margin: 0 0 1rem;
+      }
+      .dg-step-head { display: flex; gap: 0.9rem; align-items: flex-start; }
+      .dg-num {
+        flex: 0 0 auto;
+        display: flex; align-items: center; justify-content: center;
+        width: 2.6rem; height: 2.6rem; border-radius: 50%;
+        background: var(--ink); color: var(--bg);
+        font-size: 1.4rem; font-weight: 800; line-height: 1;
+      }
+      .dg-num.kakao { background: #fee500; color: #191600; }
+      .dg-step h4 { font-size: 1.5rem; font-weight: 800; line-height: 1.35; margin: 0.25rem 0 0; }
+      .dg-step p { margin: 0.8rem 0 0; }
+      .dg-menu {
+        font-weight: 800;
+        background: var(--surface);
+        border-radius: 0.4rem;
+        padding: 0 0.3em;
+        white-space: nowrap;
+      }
+      .dg-tip {
+        margin-top: 0.9rem;
+        background: var(--surface);
+        border-radius: 0.75rem;
+        padding: 0.8rem 0.9rem;
+        font-size: 1.25rem;
+        line-height: 1.55;
+      }
+      /* 예시 화면(휴대폰 모양) */
+      .dg-mock { margin-top: 1rem; display: flex; flex-direction: column; align-items: center; }
+      .dg-mock-cap { font-size: 1.15rem; color: var(--ink-soft); font-weight: 700; margin-bottom: 0.5rem; text-align: center; }
+      .dg-phone {
+        width: 240px; max-width: 78vw;
+        border: 5px solid #22312a; border-radius: 30px;
+        background: #fbfcfb; color: #1c2b22;
+        overflow: hidden; font-size: 13px; line-height: 1.45;
+        box-shadow: 0 6px 18px rgba(0,0,0,.18);
+      }
+      .dg-notch { width: 84px; height: 16px; margin: 6px auto 2px; background: #22312a; border-radius: 8px; }
+      .dg-scr { padding: 8px 12px 14px; }
+      .dg-appbar {
+        display: flex; align-items: center; justify-content: space-between;
+        font-weight: 900; font-size: 14px; padding: 4px 0 8px;
+        border-bottom: 2px solid #e3ece5;
+      }
+      .dg-logo-g { color: #0b6e4f; }
+      .dg-logo-k { color: #191600; background: #fee500; border-radius: 6px; padding: 1px 7px; }
+      .dg-mcard {
+        margin-top: 10px; border-radius: 14px; padding: 12px;
+        background: linear-gradient(135deg, #0b6e4f, #12805e); color: #fff;
+      }
+      .dg-mcard-brand { font-weight: 900; font-size: 15px; }
+      .dg-mcard-bal { font-size: 20px; font-weight: 900; margin-top: 4px; }
+      .dg-mcard-num { letter-spacing: 1px; margin-top: 8px; font-size: 13px; opacity: .95; }
+      .dg-mrow {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 9px 2px; border-bottom: 1px solid #e3ece5; font-size: 13px;
+      }
+      .dg-mrow:last-child { border-bottom: none; }
+      .dg-mrow .dg-k { color: #5d7166; font-weight: 700; }
+      .dg-mrow .dg-v { font-weight: 900; }
+      .dg-mbtn {
+        margin-top: 10px; text-align: center; border-radius: 10px;
+        padding: 10px 6px; font-weight: 900; font-size: 14px;
+        background: #e7efe9; color: #1c2b22;
+      }
+      .dg-mbtn.hl { background: #0b6e4f; color: #fff; outline: 3px solid #ffb74d; outline-offset: 2px; }
+      .dg-mbtn.yl { background: #fee500; color: #191600; outline: 3px solid #ff8f00; outline-offset: 2px; }
+      .dg-mbtn.ghost { background: #fff; border: 2px solid #cfdcd2; }
+      .dg-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+      .dg-grid2 .dg-cell {
+        border: 2px solid #e3ece5; border-radius: 12px; padding: 10px 4px;
+        text-align: center; font-weight: 700;
+      }
+      .dg-grid2 .dg-cell.hl { border-color: #0b6e4f; background: #e7f4ec; outline: 3px solid #ffb74d; outline-offset: 1px; }
+      .dg-region {
+        padding: 10px 8px; border-bottom: 1px solid #e3ece5; font-weight: 700;
+        display: flex; justify-content: space-between; align-items: center;
+      }
+      .dg-region.sel { color: #0b6e4f; font-weight: 900; background: #e7f4ec; border-radius: 8px; }
+      .dg-region .dg-chk { color: #0b6e4f; font-weight: 900; }
+      .dg-field {
+        margin-top: 10px; border: 2px solid #cfdcd2; border-radius: 10px;
+        padding: 9px 10px; font-weight: 700; color: #1c2b22; background: #fff;
+      }
+      .dg-field small { display: block; color: #5d7166; font-weight: 700; font-size: 11px; }
+      .dg-field.fill { border-color: #191600; background: #fffde7; }
+      .dg-qrbox { margin: 12px auto 4px; width: 128px; height: 128px; background: #fff; border: 3px solid #191600; border-radius: 8px; padding: 8px; }
+      .dg-barcode { margin: 10px auto 2px; width: 150px; height: 44px;
+        background: repeating-linear-gradient(90deg, #191600 0 3px, #fff 3px 6px, #191600 6px 7px, #fff 7px 11px, #191600 11px 14px, #fff 14px 17px);
+        border-radius: 4px; }
+      .dg-tabbar {
+        display: flex; border-top: 2px solid #e3ece5; margin: 10px -12px -14px;
+        padding: 8px 0 10px; background: #f3f7f4;
+      }
+      .dg-tabbar div { flex: 1; text-align: center; font-size: 11px; font-weight: 700; color: #5d7166; }
+      .dg-tabbar div.on { color: #0b6e4f; font-weight: 900; }
+      .dg-tabbar.kakao div.on { color: #191600; }
+      .dg-hl-ring { outline: 3px solid #ffb74d; outline-offset: 2px; border-radius: 8px; }
+
+      /* 번호 복사 버튼 */
+      .tel-row {
+        display: flex;
+        align-items: stretch;
+        gap: 0.5rem;
+        border-top: 2px solid var(--line);
+        padding: 0.7rem 0;
+      }
+      .tel-row .hosp-tel {
+        flex: 1 1 auto;
+        min-width: 0;
+        border-top: none;
+        padding: 0;
+        min-height: 3.8rem;
+      }
+      .contact-row {
+        display: flex;
+        align-items: stretch;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+      }
+      .contact-row .contact-link {
+        flex: 1 1 auto;
+        margin-top: 0;
+      }
+      .copy-btn {
+        flex: 0 0 auto;
+        font: inherit;
+        font-size: 1.2rem;
+        font-weight: 800;
+        line-height: 1.2;
+        min-height: 3.8rem;
+        padding: 0.6rem 0.85rem;
+        border: 3px solid var(--ink);
+        border-radius: 0.75rem;
+        background: var(--card-bg);
+        color: var(--ink);
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .contact-row .copy-btn {
+        min-height: 4.8rem;
+        font-size: 1.2rem;
+        padding: 0.6rem 0.8rem;
+      }
+      .copy-btn.copied {
+        background: #0a7d3b;
+        border-color: #0a7d3b;
+        color: #ffffff;
+      }
+      .copy-toast {
+        position: fixed;
+        left: 50%;
+        bottom: calc(1.2rem + env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        background: var(--ink);
+        color: var(--bg);
+        font-size: 1.4rem;
+        font-weight: 800;
+        line-height: 1.3;
+        padding: 0.9rem 1.4rem;
+        border-radius: 999px;
+        z-index: 50;
+        box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+        max-width: calc(100vw - 2rem);
+        text-align: center;
+      }
+      [hidden] { display: none !important; }
+
+      /* 좁은 화면: 전화 버튼과 복사 버튼을 세로로 쌓아 둘 다 카드 안에 들어가게 */
+      @media (max-width: 480px) {
+        .contact-row {
+          flex-direction: column;
+          gap: 0.55rem;
+        }
+        .contact-row .contact-link {
+          width: 100%;
+        }
+        .contact-row .copy-btn {
+          width: 100%;
+          min-height: 3.6rem;
+        }
+        .contact-num {
+          font-size: 1.3rem;
+          letter-spacing: -0.03em;
+        }
+        .tel-row {
+          flex-direction: column;
+          gap: 0.55rem;
+        }
+        .tel-row .hosp-tel {
+          width: 100%;
+        }
+        .tel-row .copy-btn {
+          width: 100%;
+        }
+        .tel-row .tnum {
+          font-size: 1.35rem;
+          letter-spacing: -0.03em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <p class="brand">안산 홍약국</p>
+
+      <!-- 첫 화면: 메뉴 -->
+      <section id="view-home">
+        <p class="lead">궁금한 내용을 눌러 보세요.</p>
+
+        <div class="fontsize" role="group" aria-label="글자 크기 조절">
+          <span class="label">글자 크기</span>
+          <button type="button" data-size="m" aria-pressed="true">보통</button>
+          <button type="button" data-size="l" aria-pressed="false">크게</button>
+          <button type="button" data-size="xl" aria-pressed="false">아주 크게</button>
+        </div>
+
+        <nav class="menu" aria-label="안내 메뉴">
+          <a class="item item-hero item-a" href="#mounjaro">
+            <span class="num" aria-hidden="true">1</span>
+            <span class="texts">
+              <span class="title">마운자로</span>
+              <span class="sub">가격과 할인 정보 보기</span><br />
+              <span class="hero-stock">모든 용량 재고 있음</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a class="item item-hero item-b" href="#wegovy">
+            <span class="num" aria-hidden="true">2</span>
+            <span class="texts">
+              <span class="title">위고비</span>
+              <span class="sub">가격과 할인 정보 보기</span><br />
+              <span class="hero-stock">모든 용량 재고 있음</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a class="item item-sub" href="#discount">
+            <span class="num" aria-hidden="true">3</span>
+            <span class="texts">
+              <span class="title">할인 정보</span>
+              <span class="sub">안산 다온 · 디지털온누리</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a class="item item-sub" href="#hospital">
+            <span class="num" aria-hidden="true">4</span>
+            <span class="texts">
+              <span class="title">처방 가능한 병원</span>
+              <span class="sub">약국 주변 병원 안내</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a class="item item-sub" href="#location">
+            <span class="num" aria-hidden="true">5</span>
+            <span class="texts">
+              <span class="title">약국 위치 및 주차안내</span>
+              <span class="sub">오시는 길과 주차 안내</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+        </nav>
+
+        <p class="note">가격변동이나 재고변동 시 즉시 반영되니, 이 페이지를 즐겨찾기해 주세요.</p>
+
+        <footer class="contact" aria-label="문의 전화번호">
+          <p class="contact-title">궁금하시면 연락 주세요</p>
+          <div class="contact-row">
+            <a class="contact-link" href="tel:031-403-4379">
+              <span class="contact-texts">
+                <span class="contact-label">약국 전화</span>
+                <span class="contact-num">031-403-4379</span>
+              </span>
+              <span class="contact-arrow" aria-hidden="true">›</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-403-4379" aria-label="약국 전화번호 031-403-4379 복사">번호 복사</button>
+          </div>
+          <div class="contact-row">
+            <a class="contact-link" href="tel:010-5051-4379">
+              <span class="contact-texts">
+                <span class="contact-label">약국장 개인전화</span>
+                <span class="contact-num">010-5051-4379</span>
+              </span>
+              <span class="contact-arrow" aria-hidden="true">›</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="010-5051-4379" aria-label="약국장 개인전화번호 010-5051-4379 복사">번호 복사</button>
+          </div>
+          <p class="contact-note">전화 버튼이 연결되지 않으면, 옆의 '번호 복사'를 눌러 번호를 복사한 뒤 휴대폰 전화 앱에 붙여넣어 주세요.</p>
+        </footer>
+      </section>
+
+      <!-- 하위 페이지: 마운자로 -->
+      <section id="view-mounjaro" class="page" hidden>
+        <a class="back" href="#home">‹ 목록으로 돌아가기</a>
+        <h2>마운자로 가격·할인</h2>
+        <p>마운자로 4펜(한 달분) 기준 가격입니다.</p>
+        <p class="stock-note">모든 용량 재고 있습니다.</p>
+        <p>결제금액은 어느 방법이든 <strong>정가와 동일합니다.</strong> 다만 충전할 때 받는 혜택이 있어서, <strong>실제로 내 돈이 나가는 금액</strong>은 아래처럼 줄어듭니다. 카드나 앱에 미리 충전해 두실 때는 아래 금액이 아니라 <strong>정가(2.5mg 기준 290,000원)</strong>만큼 충전해 주세요.</p>
+        <p>다온카드와 디지털온누리는 <strong>나눠서 함께 쓰셔도 됩니다.</strong> 예를 들어 일부는 다온카드로, 나머지는 디지털온누리로 내셔도 됩니다.</p>
+
+        <article class="price-card dose-gray">
+          <div class="dose-head"><h3>2.5mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">290,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 263,600원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">269,700원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-purple">
+          <div class="dose-head"><h3>5.0mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">380,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 345,500원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">353,400원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-green">
+          <div class="dose-head"><h3>7.5mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">535,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 486,400원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">497,550원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-pink">
+          <div class="dose-head"><h3>10mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">535,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 486,400원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">497,550원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-blue">
+          <div class="dose-head"><h3>12.5mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">690,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 627,300원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">641,700원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-orange">
+          <div class="dose-head"><h3>15mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">690,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 627,300원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">641,700원</span>
+          </div>
+        </article>
+
+        <p class="note">다온카드 금액은 충전할 때 10%를 더 넣어주는 혜택을 계산한 금액입니다. 이 혜택은 안산시 사정에 따라 달라지거나 끝날 수 있습니다.</p>
+        <p class="note">디지털온누리 금액은 충전할 때 7%가 본인 계좌에서 덜 빠져나가는 혜택을 계산한 금액입니다. 예를 들어 100만원어치를 충전하면 본인 계좌에서는 93만원만 출금됩니다.</p>
+        <p class="note">가격변동이나 재고변동 시 즉시 반영되니, 이 페이지를 즐겨찾기해 주세요.</p>
+
+        <a class="goto" href="#discount">
+          <span class="texts">
+            <span class="gtitle">할인 방법 자세히 보기</span>
+            <span class="gsub">안산 다온 · 디지털온누리 안내</span>
+          </span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+      </section>
+
+      <!-- 하위 페이지: 위고비 -->
+      <section id="view-wegovy" class="page" hidden>
+        <a class="back" href="#home">‹ 목록으로 돌아가기</a>
+        <h2>위고비 가격·할인</h2>
+        <p>위고비 1펜(한 달분) 기준 가격입니다.</p>
+        <p class="stock-note">모든 용량 재고 있습니다.</p>
+        <p>결제금액은 어느 방법이든 <strong>정가와 동일합니다.</strong> 다만 충전할 때 받는 혜택이 있어서, <strong>실제로 내 돈이 나가는 금액</strong>은 아래처럼 줄어듭니다. 카드나 앱에 미리 충전해 두실 때는 아래 금액이 아니라 <strong>정가(0.25mg 기준 230,000원)</strong>만큼 충전해 주세요.</p>
+        <p>다온카드와 디지털온누리는 <strong>나눠서 함께 쓰셔도 됩니다.</strong> 예를 들어 일부는 다온카드로, 나머지는 디지털온누리로 내셔도 됩니다.</p>
+
+        <article class="price-card dose-green">
+          <div class="dose-head"><h3>0.25mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">230,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 209,100원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">213,900원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-pink">
+          <div class="dose-head"><h3>0.5mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">249,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 226,400원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">231,570원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-brown">
+          <div class="dose-head"><h3>1.0mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">269,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 244,500원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">250,170원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-blue">
+          <div class="dose-head"><h3>1.7mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">349,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 317,300원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">324,570원</span>
+          </div>
+        </article>
+
+        <article class="price-card dose-dark">
+          <div class="dose-head"><h3>2.4mg</h3><span class="stock-badge">재고 있음</span></div>
+          <div class="prow">
+            <span class="plabel">정가</span>
+            <span class="pamt">390,000원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
+            <span class="pamt">약 354,500원</span>
+          </div>
+          <div class="prow prow-save">
+            <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
+            <span class="pamt">362,700원</span>
+          </div>
+        </article>
+
+        <p class="note">다온카드 금액은 충전할 때 10%를 더 넣어주는 혜택을 계산한 금액입니다. 이 혜택은 안산시 사정에 따라 달라지거나 끝날 수 있습니다.</p>
+        <p class="note">디지털온누리 금액은 충전할 때 7%가 본인 계좌에서 덜 빠져나가는 혜택을 계산한 금액입니다. 예를 들어 100만원어치를 충전하면 본인 계좌에서는 93만원만 출금됩니다.</p>
+        <p class="note">가격변동이나 재고변동 시 즉시 반영되니, 이 페이지를 즐겨찾기해 주세요.</p>
+
+        <a class="goto" href="#discount">
+          <span class="texts">
+            <span class="gtitle">할인 방법 자세히 보기</span>
+            <span class="gsub">안산 다온 · 디지털온누리 안내</span>
+          </span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+      </section>
+
+      <!-- 하위 페이지: 할인 정보 (첫 화면) -->
+      <section id="view-discount" class="page" hidden>
+        <a class="back" href="#home">‹ 목록으로 돌아가기</a>
+        <h2>할인 정보</h2>
+        <p>약을 사실 때 아래 두 가지 방법으로 할인받으실 수 있습니다. 궁금한 방법을 눌러 보세요.</p>
+        <p><strong>두 방법을 섞어서 나눠 내셔도 됩니다.</strong> 예를 들어 일부는 다온카드로, 나머지는 디지털온누리로 내는 것도 가능합니다.</p>
+
+        <nav class="menu" aria-label="할인 방법 선택">
+          <a class="item item-hero item-a" href="#daon">
+            <span class="num" aria-hidden="true">1</span>
+            <span class="texts">
+              <span class="title">안산 다온카드</span>
+              <span class="sub">충전할 때 10%를 더 넣어주는 혜택</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a class="item item-hero item-b" href="#onnuri">
+            <span class="num" aria-hidden="true">2</span>
+            <span class="texts">
+              <span class="title">디지털온누리</span>
+              <span class="sub">충전할 때 7%가 덜 빠져나가는 혜택</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+        </nav>
+      </section>
+
+      <!-- 하위 페이지: 안산 다온카드 -->
+      <section id="view-daon" class="page" hidden>
+        <a class="back" href="#discount">‹ 할인 정보로 돌아가기</a>
+        <h2>안산 다온카드</h2>
+        <p>안산 다온카드는 경기지역화폐의 한 종류입니다. 충전할 때 <strong>10%를 더 넣어주는 혜택</strong>이 있습니다. 예를 들어 30만원을 충전하면 33만원을 쓸 수 있습니다.</p>
+
+        <h3>경기지역화폐 앱 설치</h3>
+        <p>다온카드를 충전하고 쓰려면 <strong>경기지역화폐</strong> 앱이 필요합니다. 쓰시는 휴대폰에 맞는 버튼을 눌러 설치하세요. 버튼을 누르면 설치 화면으로 바로 갑니다.</p>
+        <a class="storebtn" href="https://play.google.com/store/apps/details?hl=ko&id=gov.gyeonggi.ggcard" target="_blank" rel="noopener">
+          <span class="texts">
+            <span class="stitle">안드로이드폰 앱 설치</span>
+            <span class="ssub">Play 스토어에서 ‘경기지역화폐’ 설치하기</span>
+          </span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="storebtn" href="https://apps.apple.com/kr/app/경기지역화폐/id1451774088" target="_blank" rel="noopener">
+          <span class="texts">
+            <span class="stitle">아이폰 앱 설치</span>
+            <span class="ssub">앱스토어에서 ‘경기지역화폐’ 설치하기</span>
+          </span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+
+        <a class="goto" href="#paychoice">
+          <span class="texts">
+            <span class="gtitle">다온카드 모바일 발급·카카오페이 등록</span>
+            <span class="gsub">실물 카드 없이 휴대폰 QR로 결제하기</span>
+          </span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+
+        <h3>충전하실 때 꼭 확인하세요</h3>
+        <div class="warn">
+          <p>다온카드 인센티브는 인기가 많아 <strong>금방 소진됩니다.</strong> 보통 매달 1일~2일쯤에만 충전이 가능한 경우가 많습니다.</p>
+          <p>앱에 <strong>'인센티브 종료' 공지</strong>가 떠 있으면, 그 상태로 충전해도 할인 혜택이 적용되지 않으니 충전 전에 꼭 확인하세요.</p>
+        </div>
+
+        <p class="note">때에 따라 추가 페이백 행사가 열릴 수 있습니다. 행사가 있으면 이 페이지에 알려드립니다.</p>
+      </section>
+
+      <!-- 하위 페이지: 디지털온누리 -->
+      <section id="view-onnuri" class="page" hidden>
+        <a class="back" href="#discount">‹ 할인 정보로 돌아가기</a>
+        <h2>디지털온누리</h2>
+        <p>디지털온누리상품권 앱으로 결제하는 방법입니다. 충전할 때 <strong>7%가 본인 계좌에서 덜 빠져나갑니다.</strong> 예를 들어 100만원어치를 충전하면 계좌에서는 93만원만 출금됩니다.</p>
+
+        <h3>디지털온누리 앱 설치</h3>
+        <p>쓰시는 휴대폰에 맞는 버튼을 눌러 <strong>디지털온누리</strong> 앱을 설치하세요. 버튼을 누르면 설치 화면으로 바로 갑니다.</p>
+        <a class="storebtn" href="https://play.google.com/store/apps/details?id=com.komsco.kpay&hl=en_US" target="_blank" rel="noopener">
+          <span class="texts">
+            <span class="stitle">안드로이드폰 앱 설치</span>
+            <span class="ssub">Play 스토어에서 ‘디지털온누리’ 설치하기</span>
+          </span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="storebtn" href="https://apps.apple.com/kr/app/디지털온누리/id6738372450?l=en-GB" target="_blank" rel="noopener">
+          <span class="texts">
+            <span class="stitle">아이폰 앱 설치</span>
+            <span class="ssub">앱스토어에서 ‘디지털온누리’ 설치하기</span>
+          </span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+
+        <h3>준비하는 방법</h3>
+        <ol class="steps">
+          <li>위에 있는 버튼으로 <strong>'디지털온누리'</strong> 앱을 설치하세요.</li>
+          <li>본인 은행 계좌를 연동하세요.</li>
+          <li>쓸 금액만큼 충전하세요.</li>
+          <li>약국에서 결제할 때 앱의 QR 결제를 열고, 약국의 QR코드를 찍은 뒤 결제금액을 입력하고 인증하면 됩니다.</li>
+        </ol>
+
+        <ul class="points">
+          <li>안산시민이 아니어도 누구나 사용할 수 있습니다.</li>
+          <li>카드를 따로 등록할 필요가 없습니다. 앱만 있으면 됩니다.</li>
+          <li>한 달에 100만원까지 충전할 수 있고, 소진되는 경우는 거의 없습니다.</li>
+          <li>온누리 지류 상품권을 가지고 계시면 그것도 사용하실 수 있습니다.</li>
+        </ul>
+
+        <p class="note">때에 따라 추가 페이백 행사가 열릴 수 있습니다. 행사가 있으면 이 페이지에 알려드립니다.</p>
+      </section>
+
+      <!-- 하위 페이지: 다온카드 유무 선택 -->
+      <section id="view-paychoice" class="page" hidden>
+        <a class="back" href="#daon">‹ 다온카드 안내로 돌아가기</a>
+        <h2>다온카드 모바일 발급·카카오페이 등록</h2>
+        <p>다온카드가 이미 있으신가요? 상황에 맞는 버튼을 눌러 주세요.</p>
+
+        <nav class="menu" aria-label="다온카드 유무 선택">
+          <a class="item item-hero item-a" href="#payguide">
+            <span class="num" aria-hidden="true">1</span>
+            <span class="texts">
+              <span class="title">다온카드를 처음 만들어요</span>
+              <span class="sub">모바일 카드 발급부터 순서대로 안내합니다</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a class="item item-hero item-b" href="#payguide2">
+            <span class="num" aria-hidden="true">2</span>
+            <span class="texts">
+              <span class="title">다온카드가 이미 있어요</span>
+              <span class="sub">카카오페이에 등록하는 방법만 봅니다</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+        </nav>
+
+        <p class="note">실물 카드를 쓰고 계신 분도, 카드번호와 CVC를 확인해 카카오페이에 등록하시면 휴대폰 QR로 결제하실 수 있습니다.</p>
+      </section>
+
+      <!-- 하위 페이지: 다온카드 모바일 발급·카카오페이 등록 -->
+      <section id="view-payguide" class="page" hidden>
+        <a class="back" href="#daon">‹ 다온카드 안내로 돌아가기</a>
+        <h2>다온카드 모바일 발급·카카오페이 등록</h2>
+        <p>실물 카드 없이, 휴대폰으로 결제하는 방법입니다. 다온카드를 휴대폰에 넣어 두면 지갑 없이 <strong>QR코드만으로 약국에서 결제</strong>할 수 있습니다.</p>
+        <p>아래 순서를 천천히 따라 하시면 됩니다. 처음 한 번만 해 두면, 다음부터는 아주 편합니다. 앱 화면은 버전에 따라 조금 다를 수 있습니다.</p>
+
+        <div class="dg-flow" aria-hidden="true">
+          <div class="dg-f">1부<br />다온카드<br />모바일 발급</div>
+          <div class="dg-arrow">→</div>
+          <div class="dg-f">2부<br />카카오페이<br />등록 · 결제</div>
+        </div>
+
+        <h3>1부. 경기지역화폐 앱에서 다온카드 모바일 발급받기</h3>
+        <p>휴대폰 안에 다온카드를 만드는 과정입니다. 다 만들면 카드번호가 화면에 보입니다.</p>
+        <div class="dg-need">준비물: <strong>본인 명의 휴대폰</strong> 하나면 됩니다. 모바일 카드는 <strong>발급 비용이 무료</strong>입니다.</div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num">1</div>
+            <h4>‘경기지역화폐’ 앱을 여세요</h4>
+          </div>
+          <p>휴대폰에서 <span class="dg-menu">‘경기지역화폐’</span> 앱을 찾아 눌러 주세요.</p>
+          <p>앱이 없으면 아래 버튼을 눌러 설치하세요. 휴대폰에 맞는 버튼을 누르면 설치 화면으로 바로 갑니다.</p>
+          <a class="storebtn" href="https://play.google.com/store/apps/details?hl=ko&id=gov.gyeonggi.ggcard" target="_blank" rel="noopener">
+            <span class="texts">
+              <span class="stitle">안드로이드폰 앱 설치</span>
+              <span class="ssub">Play 스토어에서 ‘경기지역화폐’ 설치하기</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+          <a class="storebtn" href="https://apps.apple.com/kr/app/경기지역화폐/id1451774088" target="_blank" rel="noopener">
+            <span class="texts">
+              <span class="stitle">아이폰 앱 설치</span>
+              <span class="ssub">앱스토어에서 ‘경기지역화폐’ 설치하기</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 앱 첫 화면 예시</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span class="dg-logo-g">경기지역화폐</span><span>≡</span></div>
+                <div class="dg-mcard">
+                  <div class="dg-mcard-brand">안산 다온카드</div>
+                  <div class="dg-mcard-bal">잔액 50,000원</div>
+                  <div class="dg-mcard-num">9430&nbsp;&nbsp;••••&nbsp;&nbsp;••••&nbsp;&nbsp;1234</div>
+                </div>
+                <div class="dg-grid2">
+                  <div class="dg-cell">충전하기</div>
+                  <div class="dg-cell">이용내역</div>
+                  <div class="dg-cell hl">카드 관리</div>
+                  <div class="dg-cell">송금하기</div>
+                </div>
+                <div class="dg-tabbar"><div class="on">홈</div><div>결제</div><div>혜택</div><div>더보기</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num">2</div>
+            <h4>회원가입하고 로그인하세요</h4>
+          </div>
+          <p>처음이라면 <span class="dg-menu">‘회원가입’</span>을 눌러, 안내에 따라 <strong>휴대폰 본인인증</strong>을 해 주세요.</p>
+          <p>이때 만드는 <strong>6자리 비밀번호</strong>는 꼭 기억해 두세요. 나중에 카카오페이에 등록할 때 앞 2자리가 필요합니다.</p>
+          <div class="dg-tip">이미 가입한 적이 있으면 <strong>로그인</strong>만 하면 됩니다. 비밀번호가 생각나지 않으면 로그인 화면의 ‘비밀번호 찾기’를 이용하세요.</div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num">3</div>
+            <h4>카드 신청에서 ‘안산’을 고르세요</h4>
+          </div>
+          <p>앱에서 <span class="dg-menu">‘카드 신청’</span>을 누르고, 지역 선택 화면에서 <strong>‘경기도’ → ‘안산시’</strong>를 차례로 눌러 주세요.</p>
+          <p>안산시를 고르면 <strong>다온카드</strong>가 선택됩니다.</p>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 지역 선택 화면 예시</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span>‹</span><span>지역 선택</span><span></span></div>
+                <div class="dg-region"><span>수원시</span></div>
+                <div class="dg-region"><span>성남시</span></div>
+                <div class="dg-region sel"><span>안산시 · 다온카드</span><span class="dg-chk">✓ 선택</span></div>
+                <div class="dg-region"><span>용인시</span></div>
+                <div class="dg-region"><span>화성시</span></div>
+                <div class="dg-mbtn hl">다음</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num">4</div>
+            <h4>‘모바일 카드’로 발급 신청하세요</h4>
+          </div>
+          <p>카드 종류를 고르는 화면에서 <span class="dg-menu">‘모바일 카드’</span>를 선택하고 신청을 마쳐 주세요.</p>
+          <p>모바일 카드는 <strong>무료</strong>이고, 실물 카드처럼 배송을 기다릴 필요 없이 <strong>바로 발급</strong>됩니다.</p>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 카드 종류 선택 예시</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span>‹</span><span>카드 신청</span><span></span></div>
+                <div class="dg-grid2">
+                  <div class="dg-cell hl">모바일 카드<br /><small>무료 · 즉시 발급</small></div>
+                  <div class="dg-cell">실물 카드<br /><small>우편 배송</small></div>
+                </div>
+                <div class="dg-mbtn hl">모바일 카드 발급하기</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num">5</div>
+            <h4>‘카드 관리’에서 카드번호와 CVC를 확인하세요</h4>
+          </div>
+          <p>발급이 끝나면 앱 첫 화면에서 <span class="dg-menu">‘카드 관리’</span>를 눌러 주세요.</p>
+          <p>여기서 <strong>카드번호</strong>, <strong>유효기간</strong>, <strong>CVC</strong>(세 자리 숫자)를 볼 수 있습니다. 이 번호들을 2부에서 카카오페이에 입력합니다.</p>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 카드 관리 화면 예시</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span>‹</span><span>카드 관리</span><span></span></div>
+                <div class="dg-mcard">
+                  <div class="dg-mcard-brand">안산 다온카드 (모바일)</div>
+                  <div class="dg-mcard-num">9430&nbsp;&nbsp;1234&nbsp;&nbsp;5678&nbsp;&nbsp;1234</div>
+                </div>
+                <div class="dg-mrow"><span class="dg-k">카드번호</span><span class="dg-v">9430-1234-5678-1234</span></div>
+                <div class="dg-mrow"><span class="dg-k">유효기간</span><span class="dg-v">12 / 29</span></div>
+                <div class="dg-mrow"><span class="dg-k">CVC</span><span class="dg-v">123</span></div>
+                <div class="dg-mbtn ghost">비밀번호 변경</div>
+              </div>
+            </div>
+          </div>
+          <div class="dg-tip">카드번호 화면을 <strong>종이에 적어 두거나 사진을 찍어 두면</strong>, 2부에서 입력할 때 편합니다. 단, 사진은 다른 사람에게 보내지 마세요.</div>
+        </div>
+
+        <h3 id="dg-part2">2부. 카카오페이에 다온카드 등록하고, QR로 결제하기</h3>
+        <p>1부에서 확인한 카드번호를 카카오페이에 한 번만 등록하면, 그다음부터는 QR코드만 보여 주면 결제가 됩니다.</p>
+        <div class="dg-need">준비물: 1부의 <strong>‘카드 관리’</strong>에서 본 <strong>카드번호 · 유효기간 · CVC</strong>, 그리고 경기지역화폐 앱 <strong>6자리 비밀번호</strong></div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num kakao">1</div>
+            <h4>카카오페이 앱에서 아래 ‘결제’를 누르세요</h4>
+          </div>
+          <p><span class="dg-menu">‘카카오페이’</span> 앱을 열고, 화면 <strong>아래쪽</strong>에 있는 <span class="dg-menu">‘결제’</span>를 눌러 주세요.</p>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 카카오페이 화면 예시 (아래 ‘결제’)</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span class="dg-logo-k">pay</span><span></span></div>
+                <div class="dg-mrow"><span class="dg-k">페이머니</span><span class="dg-v">0원</span></div>
+                <div class="dg-mrow"><span class="dg-k">송금</span><span class="dg-v">›</span></div>
+                <div class="dg-mrow"><span class="dg-k">멤버십</span><span class="dg-v">›</span></div>
+                <div class="dg-tabbar kakao"><div>홈</div><div>혜택</div><div class="on dg-hl-ring">결제</div><div>자산</div><div>더보기</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num kakao">2</div>
+            <h4>‘결제수단 관리’를 누르세요</h4>
+          </div>
+          <p>결제 화면에서 <span class="dg-menu">‘결제수단 관리’</span>를 찾아 눌러 주세요.</p>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 결제 화면 예시</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span>‹</span><span>결제</span><span></span></div>
+                <div class="dg-qrbox">
+                  <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
+                    <rect width="100" height="100" fill="#fff"/>
+                    <g fill="#191600">
+                      <rect x="4" y="4" width="24" height="24"/><rect x="9" y="9" width="14" height="14" fill="#fff"/><rect x="13" y="13" width="6" height="6"/>
+                      <rect x="72" y="4" width="24" height="24"/><rect x="77" y="9" width="14" height="14" fill="#fff"/><rect x="81" y="13" width="6" height="6"/>
+                      <rect x="4" y="72" width="24" height="24"/><rect x="9" y="77" width="14" height="14" fill="#fff"/><rect x="13" y="81" width="6" height="6"/>
+                      <rect x="38" y="8" width="7" height="7"/><rect x="52" y="4" width="7" height="7"/><rect x="38" y="22" width="7" height="7"/><rect x="58" y="18" width="7" height="7"/>
+                      <rect x="8" y="40" width="7" height="7"/><rect x="24" y="46" width="7" height="7"/><rect x="44" y="38" width="7" height="7"/><rect x="64" y="44" width="7" height="7"/><rect x="82" y="38" width="7" height="7"/>
+                      <rect x="40" y="56" width="7" height="7"/><rect x="56" y="62" width="7" height="7"/><rect x="74" y="58" width="7" height="7"/><rect x="10" y="58" width="7" height="7"/>
+                      <rect x="44" y="76" width="7" height="7"/><rect x="62" y="82" width="7" height="7"/><rect x="82" y="76" width="7" height="7"/><rect x="50" y="50" width="7" height="7"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="dg-mbtn yl">결제수단 관리</div>
+                <div class="dg-mbtn ghost">결제수단 추가</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num kakao">3</div>
+            <h4>‘등록하기’ → ‘직접 입력하기’를 고르세요</h4>
+          </div>
+          <p><span class="dg-menu">‘등록하기’</span>를 누른 뒤, <span class="dg-menu">‘직접 입력하기’</span>를 눌러 주세요.</p>
+          <p>실물 카드가 없어도, <strong>카드번호만 알면 등록</strong>할 수 있습니다.</p>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 등록 방법 선택 예시</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span>‹</span><span>결제수단 관리</span><span></span></div>
+                <div class="dg-mbtn yl">+ 등록하기</div>
+                <div class="dg-mbtn ghost">카드 촬영으로 등록</div>
+                <div class="dg-mbtn yl">직접 입력하기</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num kakao">4</div>
+            <h4>카드번호를 입력하세요</h4>
+          </div>
+          <p>1부의 <span class="dg-menu">‘카드 관리’</span>에서 본 <strong>카드번호 · 유효기간 · CVC</strong>를 차례로 입력해 주세요.</p>
+          <p><strong>비밀번호</strong>를 물으면, 경기지역화폐 앱에서 쓰는 <strong>6자리 비밀번호 중 앞 2자리</strong>만 입력하면 됩니다.</p>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 카드 정보 입력 예시</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span>‹</span><span>카드 직접 입력</span><span></span></div>
+                <div class="dg-field fill"><small>카드번호</small>9430 1234 5678 1234</div>
+                <div class="dg-field fill"><small>유효기간 (월/년)</small>12 / 29</div>
+                <div class="dg-field fill"><small>CVC (3자리)</small>123</div>
+                <div class="dg-field fill"><small>비밀번호 앞 2자리</small>••</div>
+                <div class="dg-mbtn yl">등록 완료</div>
+              </div>
+            </div>
+          </div>
+          <div class="dg-tip">번호가 틀리면 등록이 안 됩니다. 그럴 땐 1부의 ‘카드 관리’ 화면을 다시 열어 <strong>한 자리씩 천천히</strong> 맞춰 보세요.</div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num kakao">5</div>
+            <h4>등록이 됐는지 확인하세요</h4>
+          </div>
+          <p><span class="dg-menu">‘결제수단 관리’</span> 목록에 <strong>안산 다온카드</strong>가 보이면 등록 성공입니다.</p>
+          <p>결제할 카드가 다온카드로 선택돼 있는지 확인해 두세요. 이제 충전한 금액으로 결제할 수 있습니다.</p>
+          <div class="dg-tip">다온카드에 돈이 없으면 결제가 안 됩니다. 경기지역화폐 앱에서 먼저 <strong>충전</strong>해 두세요.</div>
+        </div>
+
+        <div class="dg-step">
+          <div class="dg-step-head">
+            <div class="dg-num kakao">✓</div>
+            <h4>약국에서 결제할 때는 이렇게 하세요</h4>
+          </div>
+          <p>1. 카카오페이 앱을 열고 아래 <span class="dg-menu">‘결제’</span>를 누릅니다.</p>
+          <p>2. 화면에 나오는 <strong>바코드나 QR코드</strong>를 약국 직원에게 보여 주세요.</p>
+          <p>3. 스캔하면 <strong>결제 끝!</strong> 휴대폰으로 결제 내역이 바로 도착합니다.</p>
+          <div class="dg-mock">
+            <div class="dg-mock-cap">▼ 결제 화면 예시 (이 화면을 보여 주세요)</div>
+            <div class="dg-phone" aria-hidden="true">
+              <div class="dg-notch"></div>
+              <div class="dg-scr">
+                <div class="dg-appbar"><span>‹</span><span>결제</span><span></span></div>
+                <div class="dg-qrbox">
+                  <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
+                    <rect width="100" height="100" fill="#fff"/>
+                    <g fill="#191600">
+                      <rect x="4" y="4" width="24" height="24"/><rect x="9" y="9" width="14" height="14" fill="#fff"/><rect x="13" y="13" width="6" height="6"/>
+                      <rect x="72" y="4" width="24" height="24"/><rect x="77" y="9" width="14" height="14" fill="#fff"/><rect x="81" y="13" width="6" height="6"/>
+                      <rect x="4" y="72" width="24" height="24"/><rect x="9" y="77" width="14" height="14" fill="#fff"/><rect x="13" y="81" width="6" height="6"/>
+                      <rect x="38" y="8" width="7" height="7"/><rect x="52" y="4" width="7" height="7"/><rect x="38" y="22" width="7" height="7"/><rect x="58" y="18" width="7" height="7"/>
+                      <rect x="8" y="40" width="7" height="7"/><rect x="24" y="46" width="7" height="7"/><rect x="44" y="38" width="7" height="7"/><rect x="64" y="44" width="7" height="7"/><rect x="82" y="38" width="7" height="7"/>
+                      <rect x="40" y="56" width="7" height="7"/><rect x="56" y="62" width="7" height="7"/><rect x="74" y="58" width="7" height="7"/><rect x="10" y="58" width="7" height="7"/>
+                      <rect x="44" y="76" width="7" height="7"/><rect x="62" y="82" width="7" height="7"/><rect x="82" y="76" width="7" height="7"/><rect x="50" y="50" width="7" height="7"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="dg-barcode"></div>
+                <div class="dg-mrow"><span class="dg-k">결제수단</span><span class="dg-v">안산 다온카드</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>주의하세요 — 예전에 발급받은 카드가 있는 경우</h3>
+        <div class="warn">
+          <p>이미 다온카드를 쓰고 계신 분 중에는, <strong>‘카드 관리’에서 CVC 번호가 보이지 않는</strong> 경우가 있습니다. (예전에 발급받은 카드에서 그렇습니다.)</p>
+          <p>CVC가 안 보이면 카카오페이에 등록할 수 없으니, 아래 순서대로 해 주세요.</p>
+          <p>1. 경기지역화폐 앱의 <span class="dg-menu">‘카드 관리’</span> 화면 <strong>맨 아래</strong>에 있는 <span class="dg-menu">‘카드 추가 신청하기’</span>를 누르세요.</p>
+          <p>2. <strong>모바일 카드</strong>로 새로 발급받으세요. <strong>무료</strong>입니다. 새 카드에는 카드번호와 CVC가 보입니다.</p>
+          <p>3. 예전 카드에 남은 돈은 <span class="dg-menu">‘나에게 송금’</span> 버튼을 눌러 <strong>새 카드로 옮기면</strong>, 바로 결제할 수 있습니다.</p>
+          <p>4. 그다음 2부의 방법으로 새 카드를 카카오페이에 등록하세요.</p>
+        </div>
+
+        <p class="note">등록이 어려우시면 약국에 오셔서 문의해 주세요.</p>
+      </section>
+
+      <!-- 하위 페이지: 처방 가능한 병원 -->
+      <section id="view-hospital" class="page" hidden>
+        <a class="back" href="#home">‹ 목록으로 돌아가기</a>
+        <h2>처방 가능한 병원</h2>
+        <p>마운자로와 위고비는 처방받으실 수 있는 병원이 조금 다릅니다. 받으실 약을 눌러 보세요.</p>
+
+        <nav class="menu" aria-label="약 선택">
+          <a class="item item-hero item-a" href="#hospital-mounjaro">
+            <span class="num" aria-hidden="true">1</span>
+            <span class="texts">
+              <span class="title">마운자로</span>
+              <span class="sub">처방 가능한 병원 보기</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a class="item item-hero item-b" href="#hospital-wegovy">
+            <span class="num" aria-hidden="true">2</span>
+            <span class="texts">
+              <span class="title">위고비</span>
+              <span class="sub">처방 가능한 병원 보기</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+        </nav>
+      </section>
+
+      <!-- 하위 페이지: 마운자로 처방 가능한 병원 -->
+      <section id="view-hospital-mounjaro" class="page" hidden>
+        <a class="back" href="#hospital">‹ 약 선택으로 돌아가기</a>
+        <h2>마운자로 처방 가능한 병원</h2>
+        <p>약국 근처에서 마운자로를 처방받으실 수 있는 병원입니다. 방문 전에 전화로 확인하고 가세요.</p>
+
+        <article class="hosp-card">
+          <h3>하트봄내과의원</h3>
+          <p>약국 건물 2층에 있습니다.</p>
+          <p><span class="alert">목요일은 오전진료만</span> 합니다.</p>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:031-482-5656">
+              <span class="tlabel">전화</span>
+              <span class="tnum">031-482-5656</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-482-5656" aria-label="전화번호 031-482-5656 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%ED%95%98%ED%8A%B8%EB%B4%84%EB%82%B4%EA%B3%BC%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="hosp-card">
+          <h3>강남바른 추의원</h3>
+          <p>약국 건물 3층에 있습니다.</p>
+          <p>BMI 30 이상이신 분들만 처방이 가능합니다.</p>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:031-405-8275">
+              <span class="tlabel">전화</span>
+              <span class="tnum">031-405-8275</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-405-8275" aria-label="전화번호 031-405-8275 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%EA%B0%95%EB%82%A8%EB%B0%94%EB%A5%B8%EC%B6%94%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="hosp-card">
+          <h3>더베스트내과의원</h3>
+          <p>약국에서 2블록 거리에 있습니다.</p>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:031-487-1119">
+              <span class="tlabel">전화</span>
+              <span class="tnum">031-487-1119</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-487-1119" aria-label="전화번호 031-487-1119 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%EB%8D%94%EB%B2%A0%EC%8A%A4%ED%8A%B8%EB%82%B4%EA%B3%BC%EC%9D%98%EC%9B%90%20%EC%95%88%EC%82%B0" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="hosp-card">
+          <h3>루카스 내과</h3>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:1833-5113">
+              <span class="tlabel">전화</span>
+              <span class="tnum">1833-5113</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="1833-5113" aria-label="전화번호 1833-5113 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%EB%A3%A8%EC%B9%B4%EC%8A%A4%EB%82%B4%EA%B3%BC%20%EC%95%88%EC%82%B0" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+      </section>
+
+      <!-- 하위 페이지: 위고비 처방 가능한 병원 -->
+      <section id="view-hospital-wegovy" class="page" hidden>
+        <a class="back" href="#hospital">‹ 약 선택으로 돌아가기</a>
+        <h2>위고비 처방 가능한 병원</h2>
+        <p>약국 근처에서 위고비를 처방받으실 수 있는 병원입니다. 방문 전에 전화로 확인하고 가세요.</p>
+
+        <article class="hosp-card">
+          <h3>하트봄내과의원</h3>
+          <p>약국 건물 2층에 있습니다.</p>
+          <p><span class="alert">목요일은 오전진료만</span> 합니다.</p>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:031-482-5656">
+              <span class="tlabel">전화</span>
+              <span class="tnum">031-482-5656</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-482-5656" aria-label="전화번호 031-482-5656 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%ED%95%98%ED%8A%B8%EB%B4%84%EB%82%B4%EA%B3%BC%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="hosp-card">
+          <h3>강남바른 추의원</h3>
+          <p>약국 건물 3층에 있습니다.</p>
+          <p>BMI 30 이상이신 분들만 처방이 가능합니다.</p>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:031-405-8275">
+              <span class="tlabel">전화</span>
+              <span class="tnum">031-405-8275</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-405-8275" aria-label="전화번호 031-405-8275 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%EA%B0%95%EB%82%A8%EB%B0%94%EB%A5%B8%EC%B6%94%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="hosp-card">
+          <h3>한마음소아청소년과 의원</h3>
+          <p>약국에서 2블록 거리에 있습니다.</p>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:031-482-9119">
+              <span class="tlabel">전화</span>
+              <span class="tnum">031-482-9119</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-482-9119" aria-label="전화번호 031-482-9119 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%ED%95%9C%EB%A7%88%EC%9D%8C%EC%86%8C%EC%95%84%EC%B2%AD%EC%86%8C%EB%85%84%EA%B3%BC%EC%9D%98%EC%9B%90%20%EC%95%88%EC%82%B0" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="hosp-card">
+          <h3>더베스트내과의원</h3>
+          <p>약국에서 2블록 거리에 있습니다.</p>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:031-487-1119">
+              <span class="tlabel">전화</span>
+              <span class="tnum">031-487-1119</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-487-1119" aria-label="전화번호 031-487-1119 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%EB%8D%94%EB%B2%A0%EC%8A%A4%ED%8A%B8%EB%82%B4%EA%B3%BC%EC%9D%98%EC%9B%90%20%EC%95%88%EC%82%B0" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="hosp-card">
+          <h3>루카스 내과</h3>
+          <div class="tel-row">
+            <a class="hosp-tel" href="tel:1833-5113">
+              <span class="tlabel">전화</span>
+              <span class="tnum">1833-5113</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="1833-5113" aria-label="전화번호 1833-5113 복사">번호 복사</button>
+          </div>
+          <a class="mapbtn" href="https://map.naver.com/p/search/%EB%A3%A8%EC%B9%B4%EC%8A%A4%EB%82%B4%EA%B3%BC%20%EC%95%88%EC%82%B0" target="_blank" rel="noopener">네이버지도에서 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        </article>
+      </section>
+
+      <!-- 하위 페이지: 약국 위치 -->
+      <section id="view-location" class="page" hidden>
+        <a class="back" href="#home">‹ 목록으로 돌아가기</a>
+        <h2>약국 위치 및 주차안내</h2>
+        <p><strong>안산 홍약국</strong></p>
+        <p>경기도 안산시 단원구 광덕3로 167<br />신영프라자 1층 102호 (고잔동)</p>
+        <div class="tel-row">
+            <a class="hosp-tel" href="tel:031-403-4379">
+              <span class="tlabel">전화</span>
+              <span class="tnum">031-403-4379</span>
+            </a>
+            <button type="button" class="copy-btn" data-copy-number="031-403-4379" aria-label="전화번호 031-403-4379 복사">번호 복사</button>
+          </div>
+        <p>아래 버튼을 누르면 네이버지도에서 약국 위치를 보실 수 있습니다.</p>
+        <a class="mapbtn" href="https://map.naver.com/p/search/%ED%99%8D%EC%95%BD%EA%B5%AD%20%EC%95%88%EC%82%B0" target="_blank" rel="noopener">네이버지도에서 홍약국 위치 보기 <span class="arrow" aria-hidden="true">›</span></a>
+        <h3>주차 안내</h3>
+        <p>약국 건물 <strong>지하에 자체 주차장</strong>이 있습니다. 차를 가지고 오셔도 건물 지하에 주차하시고 편하게 약국에 오실 수 있습니다.</p>
+        <p>다만 지하 주차장이 다소 협소해서 <strong>만차인 경우가 있습니다.</strong> 도보로 방문하실 수 있다면 도보 방문을 추천드립니다.</p>
+      </section>
+
+    </main>
+    <div class="copy-toast" id="copy-toast" role="status" aria-live="polite" hidden></div>
+
+    <script>
+      (function () {
+        var views = ["home", "mounjaro", "wegovy", "discount", "daon", "onnuri", "paychoice", "payguide", "hospital", "hospital-mounjaro", "hospital-wegovy", "location"];
+
+        function currentView() {
+          var h = (location.hash || "").replace("#", "");
+          return views.indexOf(h) >= 0 ? h : "home";
+        }
+
+        function show() {
+          var h = (location.hash || "").replace("#", "");
+          var v = currentView();
+          var anchor = null;
+          if (h === "payguide2") { v = "payguide"; anchor = "dg-part2"; }
+          for (var i = 0; i < views.length; i++) {
+            var el = document.getElementById("view-" + views[i]);
+            if (el) el.hidden = views[i] !== v;
+          }
+          if (anchor) {
+            var target = document.getElementById(anchor);
+            if (target) {
+              target.setAttribute("tabindex", "-1");
+              target.focus({ preventScroll: true });
+              target.scrollIntoView();
+              return;
+            }
+          }
+          window.scrollTo(0, 0);
+          var shown = document.getElementById("view-" + v);
+          if (shown) {
+            var head = shown.querySelector("h2, .lead");
+            if (head) {
+              head.setAttribute("tabindex", "-1");
+              head.focus({ preventScroll: true });
+            }
+          }
+        }
+
+        window.addEventListener("hashchange", show);
+        show();
+
+        /* 번호 복사 */
+        var copyButtons = document.querySelectorAll("[data-copy-number]");
+        var toast = document.getElementById("copy-toast");
+        var toastTimer = null;
+        function showCopied(btn, num) {
+          copyButtons.forEach(function (b) {
+            b.classList.remove("copied");
+            if (b.dataset && b.dataset.origText) b.textContent = b.dataset.origText;
+            else if (!b.dataset) b.textContent = "번호 복사";
+          });
+          if (!btn.dataset.origText) btn.dataset.origText = "번호 복사";
+          btn.textContent = "복사됨";
+          btn.classList.add("copied");
+          if (toast) {
+            toast.textContent = num + " 복사됨";
+            toast.hidden = false;
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(function () {
+              toast.hidden = true;
+              btn.textContent = btn.dataset.origText;
+              btn.classList.remove("copied");
+            }, 2500);
+          } else {
+            setTimeout(function () {
+              btn.textContent = btn.dataset.origText;
+              btn.classList.remove("copied");
+            }, 2500);
+          }
+        }
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+        copyButtons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var num = btn.getAttribute("data-copy-number") || "";
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(num).then(function () {
+                showCopied(btn, num);
+              }, function () {
+                if (fallbackCopy(num)) showCopied(btn, num);
+                else if (toast) {
+                  toast.textContent = num;
+                  toast.hidden = false;
+                  setTimeout(function () { toast.hidden = true; }, 2500);
+                }
+              });
+            } else {
+              if (fallbackCopy(num)) showCopied(btn, num);
+            }
+          });
+        });
+
+        /* 글자 크기 조절 (이 방문 중에만 적용) */
+        var buttons = document.querySelectorAll(".fontsize button");
+        buttons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            document.documentElement.setAttribute("data-font", btn.getAttribute("data-size"));
+            buttons.forEach(function (b) {
+              b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
