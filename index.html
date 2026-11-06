@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="data:," />
-    <title>마운자로·위고비 안내</title>
+    <title>마운자로·위고비 안내 버전2</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     <style>
       :root {
@@ -291,6 +291,21 @@
       .warn p { margin: 0 0 0.6rem; }
       .warn p:last-child { margin-bottom: 0; }
 
+      /* 월 충전한도 안내 배너 (디지털온누리) */
+      .limit-banner {
+        border: 3px solid var(--alert);
+        border-radius: 1rem;
+        padding: 1rem 1.1rem;
+        margin: 0 0 1.5rem;
+        text-align: center;
+      }
+      .limit-banner p {
+        color: var(--alert);
+        font-weight: 800;
+        font-size: 1.6rem;
+        margin: 0;
+      }
+
       /* 가격 카드: 용량 하나에 카드 하나 */
       .price-card {
         border: 3px solid var(--line);
@@ -501,7 +516,7 @@
       .mapbtn .arrow { flex: 0 0 auto; font-size: 2rem; font-weight: 800; line-height: 1; }
 
 
-      /* 다온카드 발급·카카오페이 등록 안내 (예시 화면 포함) */
+      /* (미사용 스타일 유지) */
       .dg-flow { display: flex; gap: 0.5rem; align-items: stretch; margin: 0 0 1.5rem; }
       .dg-flow .dg-f {
         flex: 1; text-align: center; border-radius: 0.75rem; padding: 0.8rem 0.4rem;
@@ -765,7 +780,7 @@
             <span class="num" aria-hidden="true">3</span>
             <span class="texts">
               <span class="title">할인 정보</span>
-              <span class="sub">안산 다온 · 디지털온누리</span>
+              <span class="sub">디지털온누리</span>
             </span>
             <span class="arrow" aria-hidden="true">›</span>
           </a>
@@ -823,18 +838,13 @@
         <h2>마운자로 가격·할인</h2>
         <p>마운자로 4펜(한 달분) 기준 가격입니다.</p>
         <p class="stock-note">모든 용량 재고 있습니다.</p>
-        <p>결제금액은 어느 방법이든 <strong>정가와 동일합니다.</strong> 다만 충전할 때 받는 혜택이 있어서, <strong>실제로 내 돈이 나가는 금액</strong>은 아래처럼 줄어듭니다. 카드나 앱에 미리 충전해 두실 때는 아래 금액이 아니라 <strong>정가(2.5mg 기준 290,000원)</strong>만큼 충전해 주세요.</p>
-        <p>다온카드와 디지털온누리는 <strong>나눠서 함께 쓰셔도 됩니다.</strong> 예를 들어 일부는 다온카드로, 나머지는 디지털온누리로 내셔도 됩니다.</p>
+        <p>결제금액은 <strong>정가와 동일합니다.</strong> 다만 충전할 때 받는 혜택이 있어서, <strong>실제로 내 돈이 나가는 금액</strong>은 아래처럼 줄어듭니다. 카드나 앱에 미리 충전해 두실 때는 아래 금액이 아니라 <strong>정가(2.5mg 기준 290,000원)</strong>만큼 충전해 주세요.</p>
 
         <article class="price-card dose-gray">
           <div class="dose-head"><h3>2.5mg</h3><span class="stock-badge">재고 있음</span></div>
           <div class="prow">
             <span class="plabel">정가</span>
             <span class="pamt">290,000원</span>
-          </div>
-          <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 263,600원</span>
           </div>
           <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
@@ -849,10 +859,6 @@
             <span class="pamt">380,000원</span>
           </div>
           <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 345,500원</span>
-          </div>
-          <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
             <span class="pamt">353,400원</span>
           </div>
@@ -863,10 +869,6 @@
           <div class="prow">
             <span class="plabel">정가</span>
             <span class="pamt">535,000원</span>
-          </div>
-          <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 486,400원</span>
           </div>
           <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
@@ -881,10 +883,6 @@
             <span class="pamt">535,000원</span>
           </div>
           <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 486,400원</span>
-          </div>
-          <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
             <span class="pamt">497,550원</span>
           </div>
@@ -895,10 +893,6 @@
           <div class="prow">
             <span class="plabel">정가</span>
             <span class="pamt">690,000원</span>
-          </div>
-          <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 627,300원</span>
           </div>
           <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
@@ -913,23 +907,18 @@
             <span class="pamt">690,000원</span>
           </div>
           <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 627,300원</span>
-          </div>
-          <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
             <span class="pamt">641,700원</span>
           </div>
         </article>
 
-        <p class="note">다온카드 금액은 충전할 때 10%를 더 넣어주는 혜택을 계산한 금액입니다. 이 혜택은 안산시 사정에 따라 달라지거나 끝날 수 있습니다.</p>
         <p class="note">디지털온누리 금액은 충전할 때 7%가 본인 계좌에서 덜 빠져나가는 혜택을 계산한 금액입니다. 예를 들어 100만원어치를 충전하면 본인 계좌에서는 93만원만 출금됩니다.</p>
         <p class="note">가격변동이나 재고변동 시 즉시 반영되니, 이 페이지를 즐겨찾기해 주세요.</p>
 
         <a class="goto" href="#discount">
           <span class="texts">
             <span class="gtitle">할인 방법 자세히 보기</span>
-            <span class="gsub">안산 다온 · 디지털온누리 안내</span>
+            <span class="gsub">디지털온누리 안내</span>
           </span>
           <span class="arrow" aria-hidden="true">›</span>
         </a>
@@ -941,18 +930,13 @@
         <h2>위고비 가격·할인</h2>
         <p>위고비 1펜(한 달분) 기준 가격입니다.</p>
         <p class="stock-note">모든 용량 재고 있습니다.</p>
-        <p>결제금액은 어느 방법이든 <strong>정가와 동일합니다.</strong> 다만 충전할 때 받는 혜택이 있어서, <strong>실제로 내 돈이 나가는 금액</strong>은 아래처럼 줄어듭니다. 카드나 앱에 미리 충전해 두실 때는 아래 금액이 아니라 <strong>정가(0.25mg 기준 230,000원)</strong>만큼 충전해 주세요.</p>
-        <p>다온카드와 디지털온누리는 <strong>나눠서 함께 쓰셔도 됩니다.</strong> 예를 들어 일부는 다온카드로, 나머지는 디지털온누리로 내셔도 됩니다.</p>
+        <p>결제금액은 <strong>정가와 동일합니다.</strong> 다만 충전할 때 받는 혜택이 있어서, <strong>실제로 내 돈이 나가는 금액</strong>은 아래처럼 줄어듭니다. 카드나 앱에 미리 충전해 두실 때는 아래 금액이 아니라 <strong>정가(0.25mg 기준 230,000원)</strong>만큼 충전해 주세요.</p>
 
         <article class="price-card dose-green">
           <div class="dose-head"><h3>0.25mg</h3><span class="stock-badge">재고 있음</span></div>
           <div class="prow">
             <span class="plabel">정가</span>
             <span class="pamt">230,000원</span>
-          </div>
-          <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 209,100원</span>
           </div>
           <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
@@ -967,10 +951,6 @@
             <span class="pamt">249,000원</span>
           </div>
           <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 226,400원</span>
-          </div>
-          <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
             <span class="pamt">231,570원</span>
           </div>
@@ -981,10 +961,6 @@
           <div class="prow">
             <span class="plabel">정가</span>
             <span class="pamt">269,000원</span>
-          </div>
-          <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 244,500원</span>
           </div>
           <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
@@ -999,10 +975,6 @@
             <span class="pamt">349,000원</span>
           </div>
           <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 317,300원</span>
-          </div>
-          <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
             <span class="pamt">324,570원</span>
           </div>
@@ -1015,23 +987,18 @@
             <span class="pamt">390,000원</span>
           </div>
           <div class="prow prow-save">
-            <span class="plabel">안산 다온카드로 내면<span class="psub">충전 시 인센티브 10% 적용</span></span>
-            <span class="pamt">약 354,500원</span>
-          </div>
-          <div class="prow prow-save">
             <span class="plabel">디지털온누리로 내면<span class="psub">충전 시 7% 차감</span></span>
             <span class="pamt">362,700원</span>
           </div>
         </article>
 
-        <p class="note">다온카드 금액은 충전할 때 10%를 더 넣어주는 혜택을 계산한 금액입니다. 이 혜택은 안산시 사정에 따라 달라지거나 끝날 수 있습니다.</p>
         <p class="note">디지털온누리 금액은 충전할 때 7%가 본인 계좌에서 덜 빠져나가는 혜택을 계산한 금액입니다. 예를 들어 100만원어치를 충전하면 본인 계좌에서는 93만원만 출금됩니다.</p>
         <p class="note">가격변동이나 재고변동 시 즉시 반영되니, 이 페이지를 즐겨찾기해 주세요.</p>
 
         <a class="goto" href="#discount">
           <span class="texts">
             <span class="gtitle">할인 방법 자세히 보기</span>
-            <span class="gsub">안산 다온 · 디지털온누리 안내</span>
+            <span class="gsub">디지털온누리 안내</span>
           </span>
           <span class="arrow" aria-hidden="true">›</span>
         </a>
@@ -1041,21 +1008,13 @@
       <section id="view-discount" class="page" hidden>
         <a class="back" href="#home">‹ 목록으로 돌아가기</a>
         <h2>할인 정보</h2>
-        <p>약을 사실 때 아래 두 가지 방법으로 할인받으실 수 있습니다. 궁금한 방법을 눌러 보세요.</p>
-        <p><strong>두 방법을 섞어서 나눠 내셔도 됩니다.</strong> 예를 들어 일부는 다온카드로, 나머지는 디지털온누리로 내는 것도 가능합니다.</p>
+        <p>약을 사실 때 아래 방법으로 할인받으실 수 있습니다.</p>
 
         <nav class="menu" aria-label="할인 방법 선택">
-          <a class="item item-hero item-a" href="#daon">
-            <span class="num" aria-hidden="true">1</span>
-            <span class="texts">
-              <span class="title">안산 다온카드</span>
-              <span class="sub">충전할 때 10%를 더 넣어주는 혜택</span>
-            </span>
-            <span class="arrow" aria-hidden="true">›</span>
-          </a>
+          
 
           <a class="item item-hero item-b" href="#onnuri">
-            <span class="num" aria-hidden="true">2</span>
+            <span class="num" aria-hidden="true">1</span>
             <span class="texts">
               <span class="title">디지털온누리</span>
               <span class="sub">충전할 때 7%가 덜 빠져나가는 혜택</span>
@@ -1065,50 +1024,13 @@
         </nav>
       </section>
 
-      <!-- 하위 페이지: 안산 다온카드 -->
-      <section id="view-daon" class="page" hidden>
-        <a class="back" href="#discount">‹ 할인 정보로 돌아가기</a>
-        <h2>안산 다온카드</h2>
-        <p>안산 다온카드는 경기지역화폐의 한 종류입니다. 충전할 때 <strong>10%를 더 넣어주는 혜택</strong>이 있습니다. 예를 들어 30만원을 충전하면 33만원을 쓸 수 있습니다.</p>
-
-        <h3>경기지역화폐 앱 설치</h3>
-        <p>다온카드를 충전하고 쓰려면 <strong>경기지역화폐</strong> 앱이 필요합니다. 쓰시는 휴대폰에 맞는 버튼을 눌러 설치하세요. 버튼을 누르면 설치 화면으로 바로 갑니다.</p>
-        <a class="storebtn" href="https://play.google.com/store/apps/details?hl=ko&id=gov.gyeonggi.ggcard" target="_blank" rel="noopener">
-          <span class="texts">
-            <span class="stitle">안드로이드폰 앱 설치</span>
-            <span class="ssub">Play 스토어에서 ‘경기지역화폐’ 설치하기</span>
-          </span>
-          <span class="arrow" aria-hidden="true">›</span>
-        </a>
-        <a class="storebtn" href="https://apps.apple.com/kr/app/경기지역화폐/id1451774088" target="_blank" rel="noopener">
-          <span class="texts">
-            <span class="stitle">아이폰 앱 설치</span>
-            <span class="ssub">앱스토어에서 ‘경기지역화폐’ 설치하기</span>
-          </span>
-          <span class="arrow" aria-hidden="true">›</span>
-        </a>
-
-        <a class="goto" href="#paychoice">
-          <span class="texts">
-            <span class="gtitle">다온카드 모바일 발급·카카오페이 등록</span>
-            <span class="gsub">실물 카드 없이 휴대폰 QR로 결제하기</span>
-          </span>
-          <span class="arrow" aria-hidden="true">›</span>
-        </a>
-
-        <h3>충전하실 때 꼭 확인하세요</h3>
-        <div class="warn">
-          <p>다온카드 인센티브는 인기가 많아 <strong>금방 소진됩니다.</strong> 보통 매달 1일~2일쯤에만 충전이 가능한 경우가 많습니다.</p>
-          <p>앱에 <strong>'인센티브 종료' 공지</strong>가 떠 있으면, 그 상태로 충전해도 할인 혜택이 적용되지 않으니 충전 전에 꼭 확인하세요.</p>
-        </div>
-
-        <p class="note">때에 따라 추가 페이백 행사가 열릴 수 있습니다. 행사가 있으면 이 페이지에 알려드립니다.</p>
-      </section>
-
       <!-- 하위 페이지: 디지털온누리 -->
       <section id="view-onnuri" class="page" hidden>
         <a class="back" href="#discount">‹ 할인 정보로 돌아가기</a>
         <h2>디지털온누리</h2>
+        <div class="limit-banner">
+          <p>한 달에 <strong>최대 100만원</strong>까지 충전할 수 있습니다</p>
+        </div>
         <p>디지털온누리상품권 앱으로 결제하는 방법입니다. 충전할 때 <strong>7%가 본인 계좌에서 덜 빠져나갑니다.</strong> 예를 들어 100만원어치를 충전하면 계좌에서는 93만원만 출금됩니다.</p>
 
         <h3>디지털온누리 앱 설치</h3>
@@ -1144,341 +1066,6 @@
         </ul>
 
         <p class="note">때에 따라 추가 페이백 행사가 열릴 수 있습니다. 행사가 있으면 이 페이지에 알려드립니다.</p>
-      </section>
-
-      <!-- 하위 페이지: 다온카드 유무 선택 -->
-      <section id="view-paychoice" class="page" hidden>
-        <a class="back" href="#daon">‹ 다온카드 안내로 돌아가기</a>
-        <h2>다온카드 모바일 발급·카카오페이 등록</h2>
-        <p>다온카드가 이미 있으신가요? 상황에 맞는 버튼을 눌러 주세요.</p>
-
-        <nav class="menu" aria-label="다온카드 유무 선택">
-          <a class="item item-hero item-a" href="#payguide">
-            <span class="num" aria-hidden="true">1</span>
-            <span class="texts">
-              <span class="title">다온카드를 처음 만들어요</span>
-              <span class="sub">모바일 카드 발급부터 순서대로 안내합니다</span>
-            </span>
-            <span class="arrow" aria-hidden="true">›</span>
-          </a>
-
-          <a class="item item-hero item-b" href="#payguide2">
-            <span class="num" aria-hidden="true">2</span>
-            <span class="texts">
-              <span class="title">다온카드가 이미 있어요</span>
-              <span class="sub">카카오페이에 등록하는 방법만 봅니다</span>
-            </span>
-            <span class="arrow" aria-hidden="true">›</span>
-          </a>
-        </nav>
-
-        <p class="note">실물 카드를 쓰고 계신 분도, 카드번호와 CVC를 확인해 카카오페이에 등록하시면 휴대폰 QR로 결제하실 수 있습니다.</p>
-      </section>
-
-      <!-- 하위 페이지: 다온카드 모바일 발급·카카오페이 등록 -->
-      <section id="view-payguide" class="page" hidden>
-        <a class="back" href="#daon">‹ 다온카드 안내로 돌아가기</a>
-        <h2>다온카드 모바일 발급·카카오페이 등록</h2>
-        <p>실물 카드 없이, 휴대폰으로 결제하는 방법입니다. 다온카드를 휴대폰에 넣어 두면 지갑 없이 <strong>QR코드만으로 약국에서 결제</strong>할 수 있습니다.</p>
-        <p>아래 순서를 천천히 따라 하시면 됩니다. 처음 한 번만 해 두면, 다음부터는 아주 편합니다. 앱 화면은 버전에 따라 조금 다를 수 있습니다.</p>
-
-        <div class="dg-flow" aria-hidden="true">
-          <div class="dg-f">1부<br />다온카드<br />모바일 발급</div>
-          <div class="dg-arrow">→</div>
-          <div class="dg-f">2부<br />카카오페이<br />등록 · 결제</div>
-        </div>
-
-        <h3>1부. 경기지역화폐 앱에서 다온카드 모바일 발급받기</h3>
-        <p>휴대폰 안에 다온카드를 만드는 과정입니다. 다 만들면 카드번호가 화면에 보입니다.</p>
-        <div class="dg-need">준비물: <strong>본인 명의 휴대폰</strong> 하나면 됩니다. 모바일 카드는 <strong>발급 비용이 무료</strong>입니다.</div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num">1</div>
-            <h4>‘경기지역화폐’ 앱을 여세요</h4>
-          </div>
-          <p>휴대폰에서 <span class="dg-menu">‘경기지역화폐’</span> 앱을 찾아 눌러 주세요.</p>
-          <p>앱이 없으면 아래 버튼을 눌러 설치하세요. 휴대폰에 맞는 버튼을 누르면 설치 화면으로 바로 갑니다.</p>
-          <a class="storebtn" href="https://play.google.com/store/apps/details?hl=ko&id=gov.gyeonggi.ggcard" target="_blank" rel="noopener">
-            <span class="texts">
-              <span class="stitle">안드로이드폰 앱 설치</span>
-              <span class="ssub">Play 스토어에서 ‘경기지역화폐’ 설치하기</span>
-            </span>
-            <span class="arrow" aria-hidden="true">›</span>
-          </a>
-          <a class="storebtn" href="https://apps.apple.com/kr/app/경기지역화폐/id1451774088" target="_blank" rel="noopener">
-            <span class="texts">
-              <span class="stitle">아이폰 앱 설치</span>
-              <span class="ssub">앱스토어에서 ‘경기지역화폐’ 설치하기</span>
-            </span>
-            <span class="arrow" aria-hidden="true">›</span>
-          </a>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 앱 첫 화면 예시</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span class="dg-logo-g">경기지역화폐</span><span>≡</span></div>
-                <div class="dg-mcard">
-                  <div class="dg-mcard-brand">안산 다온카드</div>
-                  <div class="dg-mcard-bal">잔액 50,000원</div>
-                  <div class="dg-mcard-num">9430&nbsp;&nbsp;••••&nbsp;&nbsp;••••&nbsp;&nbsp;1234</div>
-                </div>
-                <div class="dg-grid2">
-                  <div class="dg-cell">충전하기</div>
-                  <div class="dg-cell">이용내역</div>
-                  <div class="dg-cell hl">카드 관리</div>
-                  <div class="dg-cell">송금하기</div>
-                </div>
-                <div class="dg-tabbar"><div class="on">홈</div><div>결제</div><div>혜택</div><div>더보기</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num">2</div>
-            <h4>회원가입하고 로그인하세요</h4>
-          </div>
-          <p>처음이라면 <span class="dg-menu">‘회원가입’</span>을 눌러, 안내에 따라 <strong>휴대폰 본인인증</strong>을 해 주세요.</p>
-          <p>이때 만드는 <strong>6자리 비밀번호</strong>는 꼭 기억해 두세요. 나중에 카카오페이에 등록할 때 앞 2자리가 필요합니다.</p>
-          <div class="dg-tip">이미 가입한 적이 있으면 <strong>로그인</strong>만 하면 됩니다. 비밀번호가 생각나지 않으면 로그인 화면의 ‘비밀번호 찾기’를 이용하세요.</div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num">3</div>
-            <h4>카드 신청에서 ‘안산’을 고르세요</h4>
-          </div>
-          <p>앱에서 <span class="dg-menu">‘카드 신청’</span>을 누르고, 지역 선택 화면에서 <strong>‘경기도’ → ‘안산시’</strong>를 차례로 눌러 주세요.</p>
-          <p>안산시를 고르면 <strong>다온카드</strong>가 선택됩니다.</p>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 지역 선택 화면 예시</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span>‹</span><span>지역 선택</span><span></span></div>
-                <div class="dg-region"><span>수원시</span></div>
-                <div class="dg-region"><span>성남시</span></div>
-                <div class="dg-region sel"><span>안산시 · 다온카드</span><span class="dg-chk">✓ 선택</span></div>
-                <div class="dg-region"><span>용인시</span></div>
-                <div class="dg-region"><span>화성시</span></div>
-                <div class="dg-mbtn hl">다음</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num">4</div>
-            <h4>‘모바일 카드’로 발급 신청하세요</h4>
-          </div>
-          <p>카드 종류를 고르는 화면에서 <span class="dg-menu">‘모바일 카드’</span>를 선택하고 신청을 마쳐 주세요.</p>
-          <p>모바일 카드는 <strong>무료</strong>이고, 실물 카드처럼 배송을 기다릴 필요 없이 <strong>바로 발급</strong>됩니다.</p>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 카드 종류 선택 예시</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span>‹</span><span>카드 신청</span><span></span></div>
-                <div class="dg-grid2">
-                  <div class="dg-cell hl">모바일 카드<br /><small>무료 · 즉시 발급</small></div>
-                  <div class="dg-cell">실물 카드<br /><small>우편 배송</small></div>
-                </div>
-                <div class="dg-mbtn hl">모바일 카드 발급하기</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num">5</div>
-            <h4>‘카드 관리’에서 카드번호와 CVC를 확인하세요</h4>
-          </div>
-          <p>발급이 끝나면 앱 첫 화면에서 <span class="dg-menu">‘카드 관리’</span>를 눌러 주세요.</p>
-          <p>여기서 <strong>카드번호</strong>, <strong>유효기간</strong>, <strong>CVC</strong>(세 자리 숫자)를 볼 수 있습니다. 이 번호들을 2부에서 카카오페이에 입력합니다.</p>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 카드 관리 화면 예시</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span>‹</span><span>카드 관리</span><span></span></div>
-                <div class="dg-mcard">
-                  <div class="dg-mcard-brand">안산 다온카드 (모바일)</div>
-                  <div class="dg-mcard-num">9430&nbsp;&nbsp;1234&nbsp;&nbsp;5678&nbsp;&nbsp;1234</div>
-                </div>
-                <div class="dg-mrow"><span class="dg-k">카드번호</span><span class="dg-v">9430-1234-5678-1234</span></div>
-                <div class="dg-mrow"><span class="dg-k">유효기간</span><span class="dg-v">12 / 29</span></div>
-                <div class="dg-mrow"><span class="dg-k">CVC</span><span class="dg-v">123</span></div>
-                <div class="dg-mbtn ghost">비밀번호 변경</div>
-              </div>
-            </div>
-          </div>
-          <div class="dg-tip">카드번호 화면을 <strong>종이에 적어 두거나 사진을 찍어 두면</strong>, 2부에서 입력할 때 편합니다. 단, 사진은 다른 사람에게 보내지 마세요.</div>
-        </div>
-
-        <h3 id="dg-part2">2부. 카카오페이에 다온카드 등록하고, QR로 결제하기</h3>
-        <p>1부에서 확인한 카드번호를 카카오페이에 한 번만 등록하면, 그다음부터는 QR코드만 보여 주면 결제가 됩니다.</p>
-        <div class="dg-need">준비물: 1부의 <strong>‘카드 관리’</strong>에서 본 <strong>카드번호 · 유효기간 · CVC</strong>, 그리고 경기지역화폐 앱 <strong>6자리 비밀번호</strong></div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num kakao">1</div>
-            <h4>카카오페이 앱에서 아래 ‘결제’를 누르세요</h4>
-          </div>
-          <p><span class="dg-menu">‘카카오페이’</span> 앱을 열고, 화면 <strong>아래쪽</strong>에 있는 <span class="dg-menu">‘결제’</span>를 눌러 주세요.</p>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 카카오페이 화면 예시 (아래 ‘결제’)</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span class="dg-logo-k">pay</span><span></span></div>
-                <div class="dg-mrow"><span class="dg-k">페이머니</span><span class="dg-v">0원</span></div>
-                <div class="dg-mrow"><span class="dg-k">송금</span><span class="dg-v">›</span></div>
-                <div class="dg-mrow"><span class="dg-k">멤버십</span><span class="dg-v">›</span></div>
-                <div class="dg-tabbar kakao"><div>홈</div><div>혜택</div><div class="on dg-hl-ring">결제</div><div>자산</div><div>더보기</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num kakao">2</div>
-            <h4>‘결제수단 관리’를 누르세요</h4>
-          </div>
-          <p>결제 화면에서 <span class="dg-menu">‘결제수단 관리’</span>를 찾아 눌러 주세요.</p>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 결제 화면 예시</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span>‹</span><span>결제</span><span></span></div>
-                <div class="dg-qrbox">
-                  <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
-                    <rect width="100" height="100" fill="#fff"/>
-                    <g fill="#191600">
-                      <rect x="4" y="4" width="24" height="24"/><rect x="9" y="9" width="14" height="14" fill="#fff"/><rect x="13" y="13" width="6" height="6"/>
-                      <rect x="72" y="4" width="24" height="24"/><rect x="77" y="9" width="14" height="14" fill="#fff"/><rect x="81" y="13" width="6" height="6"/>
-                      <rect x="4" y="72" width="24" height="24"/><rect x="9" y="77" width="14" height="14" fill="#fff"/><rect x="13" y="81" width="6" height="6"/>
-                      <rect x="38" y="8" width="7" height="7"/><rect x="52" y="4" width="7" height="7"/><rect x="38" y="22" width="7" height="7"/><rect x="58" y="18" width="7" height="7"/>
-                      <rect x="8" y="40" width="7" height="7"/><rect x="24" y="46" width="7" height="7"/><rect x="44" y="38" width="7" height="7"/><rect x="64" y="44" width="7" height="7"/><rect x="82" y="38" width="7" height="7"/>
-                      <rect x="40" y="56" width="7" height="7"/><rect x="56" y="62" width="7" height="7"/><rect x="74" y="58" width="7" height="7"/><rect x="10" y="58" width="7" height="7"/>
-                      <rect x="44" y="76" width="7" height="7"/><rect x="62" y="82" width="7" height="7"/><rect x="82" y="76" width="7" height="7"/><rect x="50" y="50" width="7" height="7"/>
-                    </g>
-                  </svg>
-                </div>
-                <div class="dg-mbtn yl">결제수단 관리</div>
-                <div class="dg-mbtn ghost">결제수단 추가</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num kakao">3</div>
-            <h4>‘등록하기’ → ‘직접 입력하기’를 고르세요</h4>
-          </div>
-          <p><span class="dg-menu">‘등록하기’</span>를 누른 뒤, <span class="dg-menu">‘직접 입력하기’</span>를 눌러 주세요.</p>
-          <p>실물 카드가 없어도, <strong>카드번호만 알면 등록</strong>할 수 있습니다.</p>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 등록 방법 선택 예시</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span>‹</span><span>결제수단 관리</span><span></span></div>
-                <div class="dg-mbtn yl">+ 등록하기</div>
-                <div class="dg-mbtn ghost">카드 촬영으로 등록</div>
-                <div class="dg-mbtn yl">직접 입력하기</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num kakao">4</div>
-            <h4>카드번호를 입력하세요</h4>
-          </div>
-          <p>1부의 <span class="dg-menu">‘카드 관리’</span>에서 본 <strong>카드번호 · 유효기간 · CVC</strong>를 차례로 입력해 주세요.</p>
-          <p><strong>비밀번호</strong>를 물으면, 경기지역화폐 앱에서 쓰는 <strong>6자리 비밀번호 중 앞 2자리</strong>만 입력하면 됩니다.</p>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 카드 정보 입력 예시</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span>‹</span><span>카드 직접 입력</span><span></span></div>
-                <div class="dg-field fill"><small>카드번호</small>9430 1234 5678 1234</div>
-                <div class="dg-field fill"><small>유효기간 (월/년)</small>12 / 29</div>
-                <div class="dg-field fill"><small>CVC (3자리)</small>123</div>
-                <div class="dg-field fill"><small>비밀번호 앞 2자리</small>••</div>
-                <div class="dg-mbtn yl">등록 완료</div>
-              </div>
-            </div>
-          </div>
-          <div class="dg-tip">번호가 틀리면 등록이 안 됩니다. 그럴 땐 1부의 ‘카드 관리’ 화면을 다시 열어 <strong>한 자리씩 천천히</strong> 맞춰 보세요.</div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num kakao">5</div>
-            <h4>등록이 됐는지 확인하세요</h4>
-          </div>
-          <p><span class="dg-menu">‘결제수단 관리’</span> 목록에 <strong>안산 다온카드</strong>가 보이면 등록 성공입니다.</p>
-          <p>결제할 카드가 다온카드로 선택돼 있는지 확인해 두세요. 이제 충전한 금액으로 결제할 수 있습니다.</p>
-          <div class="dg-tip">다온카드에 돈이 없으면 결제가 안 됩니다. 경기지역화폐 앱에서 먼저 <strong>충전</strong>해 두세요.</div>
-        </div>
-
-        <div class="dg-step">
-          <div class="dg-step-head">
-            <div class="dg-num kakao">✓</div>
-            <h4>약국에서 결제할 때는 이렇게 하세요</h4>
-          </div>
-          <p>1. 카카오페이 앱을 열고 아래 <span class="dg-menu">‘결제’</span>를 누릅니다.</p>
-          <p>2. 화면에 나오는 <strong>바코드나 QR코드</strong>를 약국 직원에게 보여 주세요.</p>
-          <p>3. 스캔하면 <strong>결제 끝!</strong> 휴대폰으로 결제 내역이 바로 도착합니다.</p>
-          <div class="dg-mock">
-            <div class="dg-mock-cap">▼ 결제 화면 예시 (이 화면을 보여 주세요)</div>
-            <div class="dg-phone" aria-hidden="true">
-              <div class="dg-notch"></div>
-              <div class="dg-scr">
-                <div class="dg-appbar"><span>‹</span><span>결제</span><span></span></div>
-                <div class="dg-qrbox">
-                  <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
-                    <rect width="100" height="100" fill="#fff"/>
-                    <g fill="#191600">
-                      <rect x="4" y="4" width="24" height="24"/><rect x="9" y="9" width="14" height="14" fill="#fff"/><rect x="13" y="13" width="6" height="6"/>
-                      <rect x="72" y="4" width="24" height="24"/><rect x="77" y="9" width="14" height="14" fill="#fff"/><rect x="81" y="13" width="6" height="6"/>
-                      <rect x="4" y="72" width="24" height="24"/><rect x="9" y="77" width="14" height="14" fill="#fff"/><rect x="13" y="81" width="6" height="6"/>
-                      <rect x="38" y="8" width="7" height="7"/><rect x="52" y="4" width="7" height="7"/><rect x="38" y="22" width="7" height="7"/><rect x="58" y="18" width="7" height="7"/>
-                      <rect x="8" y="40" width="7" height="7"/><rect x="24" y="46" width="7" height="7"/><rect x="44" y="38" width="7" height="7"/><rect x="64" y="44" width="7" height="7"/><rect x="82" y="38" width="7" height="7"/>
-                      <rect x="40" y="56" width="7" height="7"/><rect x="56" y="62" width="7" height="7"/><rect x="74" y="58" width="7" height="7"/><rect x="10" y="58" width="7" height="7"/>
-                      <rect x="44" y="76" width="7" height="7"/><rect x="62" y="82" width="7" height="7"/><rect x="82" y="76" width="7" height="7"/><rect x="50" y="50" width="7" height="7"/>
-                    </g>
-                  </svg>
-                </div>
-                <div class="dg-barcode"></div>
-                <div class="dg-mrow"><span class="dg-k">결제수단</span><span class="dg-v">안산 다온카드</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <h3>주의하세요 — 예전에 발급받은 카드가 있는 경우</h3>
-        <div class="warn">
-          <p>이미 다온카드를 쓰고 계신 분 중에는, <strong>‘카드 관리’에서 CVC 번호가 보이지 않는</strong> 경우가 있습니다. (예전에 발급받은 카드에서 그렇습니다.)</p>
-          <p>CVC가 안 보이면 카카오페이에 등록할 수 없으니, 아래 순서대로 해 주세요.</p>
-          <p>1. 경기지역화폐 앱의 <span class="dg-menu">‘카드 관리’</span> 화면 <strong>맨 아래</strong>에 있는 <span class="dg-menu">‘카드 추가 신청하기’</span>를 누르세요.</p>
-          <p>2. <strong>모바일 카드</strong>로 새로 발급받으세요. <strong>무료</strong>입니다. 새 카드에는 카드번호와 CVC가 보입니다.</p>
-          <p>3. 예전 카드에 남은 돈은 <span class="dg-menu">‘나에게 송금’</span> 버튼을 눌러 <strong>새 카드로 옮기면</strong>, 바로 결제할 수 있습니다.</p>
-          <p>4. 그다음 2부의 방법으로 새 카드를 카카오페이에 등록하세요.</p>
-        </div>
-
-        <p class="note">등록이 어려우시면 약국에 오셔서 문의해 주세요.</p>
       </section>
 
       <!-- 하위 페이지: 처방 가능한 병원 -->
@@ -1664,7 +1251,7 @@
 
     <script>
       (function () {
-        var views = ["home", "mounjaro", "wegovy", "discount", "daon", "onnuri", "paychoice", "payguide", "hospital", "hospital-mounjaro", "hospital-wegovy", "location"];
+        var views = ["home", "mounjaro", "wegovy", "discount", "onnuri", "hospital", "hospital-mounjaro", "hospital-wegovy", "location"];
 
         function currentView() {
           var h = (location.hash || "").replace("#", "");
@@ -1675,7 +1262,6 @@
           var h = (location.hash || "").replace("#", "");
           var v = currentView();
           var anchor = null;
-          if (h === "payguide2") { v = "payguide"; anchor = "dg-part2"; }
           for (var i = 0; i < views.length; i++) {
             var el = document.getElementById("view-" + views[i]);
             if (el) el.hidden = views[i] !== v;
