@@ -100,6 +100,18 @@
         outline: 4px solid var(--focus);
         outline-offset: 2px;
       }
+      /* 눌림이 바로 느껴지게: 탭 반응 + 눌렀을 때 살짝 어두워짐 */
+      a, button {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.15);
+        touch-action: manipulation;
+      }
+      .item:active, .goto:active, .storebtn:active, .mapbtn:active,
+      .contact-link:active, .hosp-tel:active {
+        filter: brightness(0.9);
+      }
+      .back:active, .copy-btn:active, .fontsize button:active {
+        filter: brightness(0.93);
+      }
       [tabindex="-1"]:focus { outline: none; }
 
       /* 메뉴 */
@@ -802,6 +814,15 @@
             </span>
             <span class="arrow" aria-hidden="true">›</span>
           </a>
+
+          <a class="item item-sub" href="#guide">
+            <span class="num" aria-hidden="true">6</span>
+            <span class="texts">
+              <span class="title">주사기 사용법</span>
+              <span class="sub">마운자로·위고비 주사 맞는 법 보기</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
         </nav>
 
         <p class="note">가격변동이나 재고변동 시 즉시 반영되니, 이 페이지를 즐겨찾기해 주세요.</p>
@@ -1246,34 +1267,45 @@
         <p>다만 지하 주차장이 다소 협소해서 <strong>만차인 경우가 있습니다.</strong> 도보로 방문하실 수 있다면 도보 방문을 추천드립니다.</p>
       </section>
 
+      <!-- 하위 페이지: 주사기 사용법 -->
+      <section id="view-guide" class="page" hidden>
+        <a class="back" href="#home">‹ 목록으로 돌아가기</a>
+        <h2>주사기 사용법</h2>
+        <p>받으실 약의 버튼을 누르면 주사 맞는 법을 보실 수 있습니다.</p>
+
+        <nav class="menu" aria-label="주사기 사용법 선택">
+          <a class="item item-hero item-a" href="https://www.lilly.com/kr/our-medicines/guide-video/mounjaro" target="_blank" rel="noopener">
+            <span class="num" aria-hidden="true">1</span>
+            <span class="texts">
+              <span class="title">마운자로 사용법</span>
+              <span class="sub">동영상으로 주사법 보기</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a class="item item-hero item-b" href="https://m.site.naver.com/1fdGi" target="_blank" rel="noopener">
+            <span class="num" aria-hidden="true">2</span>
+            <span class="texts">
+              <span class="title">위고비 사용법</span>
+              <span class="sub">주사법 안내 보기</span>
+            </span>
+            <span class="arrow" aria-hidden="true">›</span>
+          </a>
+        </nav>
+      </section>
+
     </main>
     <div class="copy-toast" id="copy-toast" role="status" aria-live="polite" hidden></div>
 
     <script>
       (function () {
-        var views = ["home", "mounjaro", "wegovy", "discount", "onnuri", "hospital", "hospital-mounjaro", "hospital-wegovy", "location"];
+        var views = ["home", "mounjaro", "wegovy", "discount", "onnuri", "hospital", "hospital-mounjaro", "hospital-wegovy", "location", "guide"];
 
-        function currentView() {
-          var h = (location.hash || "").replace("#", "");
-          return views.indexOf(h) >= 0 ? h : "home";
-        }
-
-        function show() {
-          var h = (location.hash || "").replace("#", "");
-          var v = currentView();
-          var anchor = null;
+        function showView(v) {
+          if (views.indexOf(v) < 0) v = "home";
           for (var i = 0; i < views.length; i++) {
             var el = document.getElementById("view-" + views[i]);
             if (el) el.hidden = views[i] !== v;
-          }
-          if (anchor) {
-            var target = document.getElementById(anchor);
-            if (target) {
-              target.setAttribute("tabindex", "-1");
-              target.focus({ preventScroll: true });
-              target.scrollIntoView();
-              return;
-            }
           }
           window.scrollTo(0, 0);
           var shown = document.getElementById("view-" + v);
@@ -1281,13 +1313,36 @@
             var head = shown.querySelector("h2, .lead");
             if (head) {
               head.setAttribute("tabindex", "-1");
-              head.focus({ preventScroll: true });
+              try { head.focus({ preventScroll: true }); } catch (e) {}
             }
           }
         }
 
-        window.addEventListener("hashchange", show);
-        show();
+        function showFromHash() {
+          var h = (location.hash || "").replace("#", "");
+          showView(views.indexOf(h) >= 0 ? h : "home");
+        }
+
+        /* 내부 이동 버튼: 해시(#주소) 변경에만 기대지 않고, 잘 눌리는
+           글자 크기 버튼처럼 클릭하면 그 자리에서 바로 화면을 바꾼다.
+           일부 휴대폰 브라우저·앱 내 브라우저에서는 해시 이동이
+           동작하지 않아 버튼이 안 눌리는 것처럼 보일 수 있기 때문이다. */
+        var navLinks = document.querySelectorAll('a[href^="#"]');
+        navLinks.forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            var target = (link.getAttribute("href") || "").replace("#", "");
+            if (views.indexOf(target) < 0) return;
+            e.preventDefault();
+            showView(target);
+            try { history.pushState(null, "", "#" + target); } catch (err) {
+              try { location.hash = target; } catch (err2) {}
+            }
+          });
+        });
+
+        window.addEventListener("hashchange", showFromHash);
+        window.addEventListener("popstate", showFromHash);
+        showFromHash();
 
         /* 번호 복사 */
         var copyButtons = document.querySelectorAll("[data-copy-number]");
@@ -1334,19 +1389,29 @@
         copyButtons.forEach(function (btn) {
           btn.addEventListener("click", function () {
             var num = btn.getAttribute("data-copy-number") || "";
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard.writeText(num).then(function () {
-                showCopied(btn, num);
-              }, function () {
-                if (fallbackCopy(num)) showCopied(btn, num);
-                else if (toast) {
-                  toast.textContent = num;
-                  toast.hidden = false;
-                  setTimeout(function () { toast.hidden = true; }, 2500);
-                }
-              });
-            } else {
+            var usedClipboard = false;
+            try {
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                usedClipboard = true;
+                navigator.clipboard.writeText(num).then(function () {
+                  showCopied(btn, num);
+                }, function () {
+                  if (fallbackCopy(num)) showCopied(btn, num);
+                  else if (toast) {
+                    toast.textContent = num;
+                    toast.hidden = false;
+                    setTimeout(function () { toast.hidden = true; }, 2500);
+                  }
+                });
+              }
+            } catch (e) { usedClipboard = false; }
+            if (!usedClipboard) {
               if (fallbackCopy(num)) showCopied(btn, num);
+              else if (toast) {
+                toast.textContent = num;
+                toast.hidden = false;
+                setTimeout(function () { toast.hidden = true; }, 2500);
+              }
             }
           });
         });
